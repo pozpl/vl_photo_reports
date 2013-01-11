@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>Your Application Name</title>
+    <link href="//ajax.googleapis.com/ajax/libs/dojo/1.8.1/dojox/mobile/themes/iphone/iphone.css"
+          rel="stylesheet"></link>
+
+    <!-- stylesheet will go here -->
+
+    <!-- dojo/javascript will go here -->
+    <script src="http://ajax.googleapis.com/ajax/libs/dojo/1.8.3/dojo/dojo.js"
+            data-dojo-config="async:true"></script>
+    <script>
+        // Load the widget parser and mobile base
+        require(["dojox/mobile/parser", "dojox/mobile/deviceTheme", "dojox/mobile/compat", "dojox/mobile"],
+                function (parser, deviceTheme) {
+
+                    // Parse the page for widgets!
+                    parser.parse();
+                }
+        );
+    </script>
+
+</head>
+<body>
+
+<!-- the view or "page"; select it as the "home" screen -->
+<div id="settings" data-dojo-type="dojox.mobile.View" data-dojo-props="selected: true">
+
+    <!-- a sample heading -->
+    <h1 data-dojo-type="dojox.mobile.Heading">Settings</h1>
+
+    <!-- a rounded rectangle list container -->
+    <ul data-dojo-type="dojox.mobile.RoundRectList">
+
+        <!-- list item with an icon containing a switch -->
+        <li data-dojo-type="dojox.mobile.ListItem" data-dojo-props="icon:'../../app/images/i-icon-1.png'">
+            Airplane Mode
+            <!-- the switch -->
+            <div class="mblItemSwitch" data-dojo-type="dojox.mobile.Switch"></div>
+        </li>
+        <li data-dojo-type="dojox.mobile.ListItem"
+            data-dojo-props="icon:'../../app/images/i-icon-2.png', rightText:'mac', moveTo: 'general'">
+            Wi-Fi
+        </li>
+        <li data-dojo-type="dojox.mobile.ListItem"
+            data-dojo-props="icon:'../../app/images/i-icon-3.png', rightText:'AcmePhone'">
+            Carrier
+        </li>
+    </ul>
+</div>
+
+</body>
+</html>
