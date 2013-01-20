@@ -20,7 +20,7 @@
             margin-top: 6px;
         }
     </style>
-    <link href="js/tweetview/resources/TweetView.css" rel="stylesheet"/>
+    <link href="js/photoreports/resources/photoreports.css" rel="stylesheet"/>
 
 
     <!-- dojo/javascript will go here -->
@@ -50,7 +50,7 @@
 
             require(["dojox/mobile/deviceTheme"], function(dm){
                 require(["dojox/mobile/parser", "dojox/mobile/TabBar", "dojox/mobile/deviceTheme" , "dojo/dom-attr",
-                    "dojo/_base/array", "dojox/mobile", "dojo/domReady!"],
+                    "dojo/_base/array", "dojox/mobile", "dojox/mobile/ScrollableView", "dojo/domReady!"],
                         function(parser, TabBar, dm, domAttr, arrayUtil) {
                             // If Android....
                             if(dm.currentTheme == "android") {
@@ -71,6 +71,18 @@
 
 </head>
 <body>
+
+<!-- photoreports view -->
+<div id="last_photoreports" data-dojo-type="dojox.mobile.ScrollableView" data-dojo-config="selected: true">
+    <h1 data-dojo-type="dojox.mobile.Heading" data-dojo-props="fixed: 'top'">
+        <!-- the refresh button -->
+        <div data-dojo-type="dojox.mobile.ToolBarButton"
+             data-dojo-props="icon:'../../js/photoreports/resources/images/refresh.png'"
+             class="mblDomButton tweetviewRefresh"></div>
+        Последние фотоотчёты
+    </h1>
+    <ul data-dojo-type="dojox.mobile.RoundRectList" class="tweetviewList"></ul>
+</div>
 
 </body>
 </html>
