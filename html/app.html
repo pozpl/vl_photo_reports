@@ -50,7 +50,8 @@
 
             require(["dojox/mobile/deviceTheme"], function(dm){
                 require(["dojox/mobile/parser", "dojox/mobile/TabBar", "dojox/mobile/deviceTheme" , "dojo/dom-attr",
-                    "dojo/_base/array", "dojox/mobile", "dojox/mobile/ScrollableView", "dojo/domReady!"],
+                    "dojo/_base/array", "photoreports/PhotoReportsList",
+                    "dojox/mobile", "dojox/mobile/ScrollableView", "dojo/domReady!"],
                         function(parser, TabBar, dm, domAttr, arrayUtil) {
                             // If Android....
                             if(dm.currentTheme == "android") {
@@ -73,7 +74,7 @@
 <body>
 
 <!-- photoreports view -->
-<div id="last_photoreports" data-dojo-type="dojox.mobile.ScrollableView" data-dojo-config="selected: true">
+<div id="last_photoreports" data-dojo-type="photoreports.PhotoReportsList" data-dojo-config="selected: true">
     <h1 data-dojo-type="dojox.mobile.Heading" data-dojo-props="fixed: 'top'">
         <!-- the refresh button -->
         <div data-dojo-type="dojox.mobile.ToolBarButton"
