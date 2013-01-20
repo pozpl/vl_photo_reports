@@ -14,7 +14,7 @@ define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/i18n"
 		// Return the declared class!
 		return declare("photoreports.PhotoReportsList", [ScrollableView], {
 			// URL to pull tweets from; simple template included
-			serviceUrl: "http://http://www.vl.ru/ajax/getlastphotoreports/party/1",
+			serviceUrl: "http://www.vl.ru/ajax/getlastphotoreports/party/1",
 			// Create a template string for tweets:
 			tweetTemplateString: '<img src="${avatar}" alt="${name}" class="photo_report_poster" />' +
 				'<div class="eventName">${event_name}</div>',
@@ -35,8 +35,7 @@ define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/i18n"
 					callbackParamName: "callback",
 					preventCache: true,
 					timeout: 3000,
-					// "substitute" comes from _ViewMixin
-					url: this.substitute(this.serviceUrl, { account: account, since_id: accounts[account].since || 1 })
+					url: this.serviceUrl
 				});
 				photoReportsDeferred.then(function(data){
 					alert(data.length);
