@@ -14,7 +14,7 @@ define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/i18n"
 		// Return the declared class!
 		return declare("photoreports.PhotoReportsList", [ScrollableView], {
 			// URL to pull tweets from; simple template included
-			serviceUrl: "http://www.vl.ru/ajax/getlastphotoreports/party/1",
+			serviceUrl: "http://www.vl.ru/ajax/getlastphotoreports/party/2",
 			// Create a template string for tweets:
 			tweetTemplateString: '<img src="${avatar}" alt="${name}" class="photo_report_poster" />' +
 				'<div class="eventName">${event_name}</div>',
@@ -32,15 +32,23 @@ define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/i18n"
 
 			refreshPhotoReportsList: function(){
 				var photoReportsDeferred = ioScript.get(this.serviceUrl, {
-//					jsonp: "callback"
+					jsonp: "callback",
 					preventCache: false,
 					timeout: 4000
 				});
 				photoReportsDeferred.then(function(data){
-
+//					this.showPhotoReports(data);
+					alert(data);
 				},function(err){
 					//nothing here yet
 				});
+			},
+
+			showPhotoReports: function(photoReportsArray){
+				var lastReportsList = arrayUtil.pop(query(".lastReportsList"));
+				arrayUtil.forEach(function(photoReport){
+					alert(photoReport.event_id);
+				}, photoReportsArray, this);
 			},
 
 			showLoadImage: function(){
