@@ -8,7 +8,7 @@
 
 define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/i18n", "dojo/dom-class",
 	"dojo/dom-attr", "dojox/mobile/ScrollableView", "dojox/mobile/ListItem", "dojo/DeferredList",
-	"dojo/io/script", "tweetview/_ViewMixin", "dijit/registry"],
+	"dojo/io/script", "dijit/registry"],
 	function(declare, arrayUtil, lang, i18n, domClass, domAttr, ScrollableView, ListItem, DeferredList,
 	         ioScript, registry) {
 		// Return the declared class!
