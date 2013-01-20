@@ -8,7 +8,7 @@
 
 define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/i18n", "dojo/dom-class",
 	"dojo/dom-attr", "dojox/mobile/ScrollableView", "dojox/mobile/ListItem", "dojo/DeferredList",
-	"dojo/io/script", "dijit/registry", "dojo/query"],
+	"dojo/request/script", "dijit/registry", "dojo/query"],
 	function(declare, arrayUtil, lang, i18n, domClass, domAttr, ScrollableView, ListItem, DeferredList,
 	         ioScript, registry, query) {
 		// Return the declared class!
@@ -31,14 +31,15 @@ define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/i18n"
 			},
 
 			refreshPhotoReportsList: function(){
-				var photoReportsDeferred = ioScript.get({
-					callbackParamName: "callback",
-					preventCache: true,
-					timeout: 3000,
-					url: this.serviceUrl
+				var photoReportsDeferred = ioScript.get(this.serviceUrl, {
+//					jsonp: "callback"
+					preventCache: false,
+					timeout: 4000
 				});
 				photoReportsDeferred.then(function(data){
-					alert(data.length);
+
+				},function(err){
+					//nothing here yet
 				});
 			},
 
