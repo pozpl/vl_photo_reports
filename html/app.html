@@ -1,7 +1,74 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title></title>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+
+    <!-- prevent cache -->
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="pragma" content="no-cache">
+
+    <title>Twit View</title>
+    <link href="//ajax.googleapis.com/ajax/libs/dojo/1.8.1/dojox/mobile/themes/iphone/iphone.css"
+          rel="stylesheet"/>
+
+    <!-- stylesheet will go here -->
+    <style>
+            /* vertically center the image */
+        .tweetviewRefresh img {
+            margin-top: 6px;
+        }
+    </style>
+    <link href="js/tweetview/resources/TweetView.css" rel="stylesheet"/>
+
+
+    <!-- dojo/javascript will go here -->
+    <script type="text/javascript">
+
+        var dojoConfig = (function(){
+            var base = location.href.split("/");
+            base.pop();
+            base = base.join("/");
+
+            return {
+                async: true,
+                isDebug: true,
+                packages: [{
+                    name: "photoreports",
+                    location: base + "/js/photoreports"
+                }]
+            };
+        })();
+
+    </script>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/dojo/1.8.3/dojo/dojo.js"
+            data-dojo-config="async:true"></script>
+    <script>
+        (function(){
+
+            require(["dojox/mobile/deviceTheme"], function(dm){
+                require(["dojox/mobile/parser", "dojox/mobile/TabBar", "dojox/mobile/deviceTheme" , "dojo/dom-attr",
+                    "dojo/_base/array", "dojox/mobile", "dojo/domReady!"],
+                        function(parser, TabBar, dm, domAttr, arrayUtil) {
+                            // If Android....
+                            if(dm.currentTheme == "android") {
+                                var imagePath = "js/tweetview/resources/images/";
+                                // Add a new "iconLoading" attribute to the TweetView instances
+                                TweetView.prototype.iconLoading = imagePath + "androidLoading.gif";
+                                // Update image path on bottom tabbar
+                                domAttr.set(document.getElementById("tabBar"), "iconBase", imagePath + "iconStripAndroid.png");
+                            }
+                            // Parse the page!
+                            parser.parse();
+                        });
+            });
+
+
+        })();
+    </script>
+
 </head>
 <body>
 
