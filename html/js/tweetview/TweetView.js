@@ -24,12 +24,12 @@ define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/i18n"
 				this.inherited(arguments);
 				// Get the refresh button and image
 				this.refreshButton = registry.byId(this.getElements("tweetviewRefresh", this.domNode)[0].id);
-				this.iconNode = this.refreshButton.iconNode.childNodes[0];
+				this.iconNode = this.refreshButton.iconNode;
 				this.iconImage = this.iconNode.src;
 				// Add a click handler to the button that calls refresh
 				this.refreshButton.on("click", lang.hitch(this, "refresh"), true);
 				// Grab tweets right away!
-				this.refresh();
+//				this.refresh();
 				// Add CSS class for styling
 				domClass.add(this.domNode, "tweetviewPane");
 				// Get the list widget
@@ -53,7 +53,8 @@ define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/i18n"
 				// Set the refresh icon
 				var refreshButton = this.refreshButton;
 				this.iconNode.src = this.iconLoading;
-				refreshButton.select();
+				refreshButton.set("icon", this.iconLoading);
+				refreshButton.set("selected", true);
 
 				// For every account, add the deferred to the list
 				var defs = [], accounts = tweetview.ACCOUNTS;
@@ -203,7 +204,7 @@ define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/i18n"
 
 				// Show the list now that we have content for it
 				this.showListNode(true);
-			},
+			}
 		});
 	}
 );

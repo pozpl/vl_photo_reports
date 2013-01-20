@@ -22,23 +22,59 @@
     </style>
     <link href="js/tweetview/resources/TweetView.css" rel="stylesheet"/>
 
+
     <!-- dojo/javascript will go here -->
+    <script type="text/javascript">
+
+        var dojoConfig = (function(){
+            var base = location.href.split("/");
+            base.pop();
+            base = base.join("/");
+
+            return {
+                async: true,
+                isDebug: true,
+                packages: [{
+                    name: "tweetview",
+                    location: base + "/js/tweetview"
+                }]
+            };
+        })();
+
+    </script>
+
     <script src="http://ajax.googleapis.com/ajax/libs/dojo/1.8.3/dojo/dojo.js"
             data-dojo-config="async:true"></script>
     <script>
-        // Load the widget parser and mobile base
-        require(["dojox/mobile/parser", "dojox/mobile/deviceTheme", "dojox/mobile/compat", "dojox/mobile",
-            "dojox/mobile/ScrollableView", "dojox/mobile/TabBar", "tweetview/TweetView",
-            "tweetview/SettingsView"],
-                function (parser, deviceTheme) {
-                    tweetview.ACCOUNTS = {
-                        'pozpl': { enabled: true },
-                        'ilyamirin': { enabled: true }
-                    };
-                    // Parse the page for widgets!
+        (function(){
+
+            require(["dojox/mobile/deviceTheme"], function(dm){
+                require(["dojox/mobile/parser", "dojox/mobile/TabBar", "tweetview/TweetView",
+                    "tweetview/SettingsView","dojox/mobile/deviceTheme" , "dojo/dom-attr", "dojo/_base/array", "dojox/mobile", "dojo/domReady!"],
+                        function(parser, TabBar, TweetView, SettingsView, dm, domAttr, arrayUtil) {
+                    // If Android....
+                    if(dm.currentTheme == "android") {
+                        var imagePath = "js/tweetview/resources/images/";
+                        // Add a new "iconLoading" attribute to the TweetView instances
+                        TweetView.prototype.iconLoading = imagePath + "androidLoading.gif";
+                        // Update image path on bottom tabbar
+                        domAttr.set(document.getElementById("tabBar"), "iconBase", imagePath + "iconStripAndroid.png");
+                    }
+                    // Parse the page!
                     parser.parse();
+                });
+            });
+
+            // Set accounts for tweetview directly on the namespace
+            tweetview = {
+                ACCOUNTS: {
+                    pozpl: { enabled: true },
+                    ilyamirin: { enabled: true }/*,
+                     someaccounthatdoesntexist: { enabled: true }*/
                 }
-        );
+            };
+
+        })();
     </script>
 
 </head>
@@ -48,7 +84,7 @@
     <h1 data-dojo-type="dojox.mobile.Heading" data-dojo-props="fixed: 'top'">
         <!-- the refresh button -->
         <div data-dojo-type="dojox.mobile.ToolBarButton"
-             data-dojo-props="icon:'../../app/js/tweetview/resources/images/refresh.png'"
+             data-dojo-props="icon:'../../js/tweetview/resources/images/refresh.png'"
              class="mblDomButton tweetviewRefresh"></div>
         Tweets
     </h1>
@@ -61,7 +97,7 @@
     <h1 data-dojo-type="dojox.mobile.Heading" data-dojo-props="fixed: 'top'">
         <!-- the refresh button -->
         <div data-dojo-type="dojox.mobile.ToolBarButton"
-             data-dojo-props="icon:'../../app/js/tweetview/resources/images/refresh.png'"
+             data-dojo-props="icon:'../../js/tweetview/resources/images/refresh.png'"
              class="mblDomButton tweetviewRefresh"></div>
         Mentions
     </h1>
@@ -69,15 +105,10 @@
 </div>
 
 <!-- settings view -->
-<div id="settings" data-dojo-type="dojox.mobile.ScrollableView">
+<div id="settings" data-dojo-type="tweetview.SettingsView" data-dojo-props="views: 'tweets,mentions'">
     <h1 data-dojo-type="dojox.mobile.Heading" data-dojo-props="fixed: 'top'">Settings</h1>
-
     <h2 data-dojo-type="dojox.mobile.RoundRectCategory">Show</h2>
-    <ul data-dojo-type="dojox.mobile.RoundRectList">
-        <li data-dojo-type="dojox.mobile.ListItem">
-            Setting item here
-        </li>
-    </ul>
+    <ul data-dojo-type="dojox.mobile.RoundRectList" class="tweetviewList"></ul>
 </div>
 
 <!-- the bottom tabbar -->
