@@ -1,13 +1,17 @@
 use CGI::Application::PSGI;
 use Plack::Builder;
-use WebApp;
+use Plack::App::File;
+use JsonProxy;
  
 my $app = sub {
     my $env = shift;
-    my $app = WebApp->new({ QUERY => CGI::PSGI->new($env) });
+    my $app = JsonProxy->new({ QUERY => CGI::PSGI->new($env) });
     CGI::Application::PSGI->run($app);
 };
 
+my $app_static = Plack::App::File->new(root => "./html/")->to_app;
+
 builder {
-    mount "/" => builder {$app};
+	mount "/" => builder {$app_static};
+	mount "/index.cgi" => builder {$app};
 };
