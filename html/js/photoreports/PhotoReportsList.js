@@ -14,7 +14,7 @@ define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/i18n"
 		// Return the declared class!
 		return declare("photoreports.PhotoReportsList", [ScrollableView], {
 			// URL to pull tweets from; simple template included
-			serviceUrl: "http://localhost:5000/app/get/json/all/",
+			serviceUrl: "http://localhost:5000/app/get/json/all",
 			// Create a template string for tweets:
 			tweetTemplateString: '<img src="${avatar}" alt="${name}" class="photo_report_poster" />' +
 				'<div class="eventName">${event_name}</div>',
@@ -44,10 +44,14 @@ define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/i18n"
 				});
 			},
 
-			showPhotoReports: function(photoReportsArray){console.log(photoReportsArray);
-				//var lastReportsList = arrayUtil.pop(query(".lastReportsList"));
+			showPhotoReports: function(photoReportsArray){
+				var lastReportsList = query(".lastReportsList");
+
 				arrayUtil.forEach(photoReportsArray, function(photoReport){
-					alert(photoReport.event_id);
+					var item = new ListItem({
+						"class": "photoReportsListItem"
+					}).placeAt(lastReportsList[0], "first");
+					item.containerNode.innerHTML = photoReport.event_id;
 				}, this);
 			},
 
