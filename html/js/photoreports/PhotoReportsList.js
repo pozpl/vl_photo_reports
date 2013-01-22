@@ -8,13 +8,13 @@
 
 define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/i18n", "dojo/dom-class",
 	"dojo/dom-attr", "dojox/mobile/ScrollableView", "dojox/mobile/ListItem", "dojo/DeferredList",
-	"dojo/request/script", "dijit/registry", "dojo/query"],
+	"dojo/request", "dijit/registry", "dojo/query"],
 	function(declare, arrayUtil, lang, i18n, domClass, domAttr, ScrollableView, ListItem, DeferredList,
 	         ioScript, registry, query) {
 		// Return the declared class!
 		return declare("photoreports.PhotoReportsList", [ScrollableView], {
 			// URL to pull tweets from; simple template included
-			serviceUrl: "http://www.vl.ru/ajax/getlastphotoreports/party/2",
+			serviceUrl: "http://localhost:5000/app/get/json/all/",
 			// Create a template string for tweets:
 			tweetTemplateString: '<img src="${avatar}" alt="${name}" class="photo_report_poster" />' +
 				'<div class="eventName">${event_name}</div>',
@@ -32,23 +32,23 @@ define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/i18n"
 
 			refreshPhotoReportsList: function(){
 				var photoReportsDeferred = ioScript.get(this.serviceUrl, {
-					jsonp: "callback",
+//					jsonp: "callback",
 					preventCache: false,
-					timeout: 4000
+					timeout: 4000,
+					handleAs: 'json'
 				});
-				photoReportsDeferred.then(function(data){
-//					this.showPhotoReports(data);
-					alert(data);
-				},function(err){
+				photoReportsDeferred.then(lang.hitch(this,function(data){
+					this.showPhotoReports(data);
+				}),function(err){
 					//nothing here yet
 				});
 			},
 
-			showPhotoReports: function(photoReportsArray){
-				var lastReportsList = arrayUtil.pop(query(".lastReportsList"));
-				arrayUtil.forEach(function(photoReport){
+			showPhotoReports: function(photoReportsArray){console.log(photoReportsArray);
+				//var lastReportsList = arrayUtil.pop(query(".lastReportsList"));
+				arrayUtil.forEach(photoReportsArray, function(photoReport){
 					alert(photoReport.event_id);
-				}, photoReportsArray, this);
+				}, this);
 			},
 
 			showLoadImage: function(){
