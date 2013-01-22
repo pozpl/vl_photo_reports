@@ -13,5 +13,5 @@ my $app_static = Plack::App::File->new(root => "./html/")->to_app;
 
 builder {
 	mount "/" => builder {$app_static};
-	mount "/index.cgi" => builder {$app};
+	mount "/app/" => builder {$app};
 };
