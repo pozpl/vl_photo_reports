@@ -32,8 +32,13 @@ use LWP::Simple;
  sub get_all() {
     my $self = shift;
     my $url = 'http://vl.ru/ajax/getlastphotoreports/party/10';
-	my $json = get( $url );
-    die "Could not get $url!" unless defined $json;
+    my $cache_key = $url;
+    my $json = $self->cache->get($cache_key);
+    if(!$json){
+		$json = get( $url );
+		die "Could not get $url!" unless defined $json;
+		$self->cache->set($cache_key, $json);
+    }
     return $json;
  }
 
