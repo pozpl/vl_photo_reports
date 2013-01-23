@@ -8,9 +8,9 @@
 
 define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/i18n", "dojo/dom-class",
 	"dojo/dom-attr", "dojox/mobile/ScrollableView", "dojox/mobile/ListItem", "dojo/DeferredList",
-	"dojo/request", "dijit/registry", "dojo/query"],
+	"dojo/request", "dijit/registry", "dojo/query", "custom/PhotoReportBadgeWidget"],
 	function(declare, arrayUtil, lang, i18n, domClass, domAttr, ScrollableView, ListItem, DeferredList,
-	         ioScript, registry, query) {
+	         ioScript, registry, query, PhotoReportBageWidget) {
 		// Return the declared class!
 		return declare("photoreports.PhotoReportsList", [ScrollableView], {
 			// URL to pull tweets from; simple template included
@@ -45,13 +45,15 @@ define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/i18n"
 			},
 
 			showPhotoReports: function(photoReportsArray){
-				var lastReportsList = query(".lastReportsList");
+				var lastReportsList = query(".lastReportsList")[0];
 
 				arrayUtil.forEach(photoReportsArray, function(photoReport){
 					var item = new ListItem({
 						"class": "photoReportsListItem"
-					}).placeAt(lastReportsList[0], "first");
-					item.containerNode.innerHTML = photoReport.event_id;
+					}).placeAt(lastReportsList, "first");
+//					item.containerNode.innerHTML = photoReport.event_id;
+					var photoReportWidget = new PhotoReportBageWidget(photoReport).placeAt(item.containerNode);
+					photoReportWidget.eventName = "some";
 				}, this);
 			},
 
