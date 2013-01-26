@@ -6,8 +6,8 @@
     <meta name="apple-mobile-web-app-capable" content="yes"/>
 
     <!-- prevent cache -->
-    <meta http-equiv="cache-control" content="no-cache">
-    <meta http-equiv="pragma" content="no-cache">
+    <!--<meta http-equiv="cache-control" content="no-cache">-->
+    <!--<meta http-equiv="pragma" content="no-cache">-->
 
     <title>Twit View</title>
     <link href="//ajax.googleapis.com/ajax/libs/dojo/1.8.1/dojox/mobile/themes/iphone/iphone.css"
@@ -37,7 +37,13 @@
                 packages: [{
                     name: "photoreports",
                     location: base + "/js/photoreports"
-                }]
+                }
+                    ,
+                    {
+                        name:'custom',
+                        location: base + "/js/custom/PhotoReportBadgeWidget"
+                    }
+                ]
             };
         })();
 
