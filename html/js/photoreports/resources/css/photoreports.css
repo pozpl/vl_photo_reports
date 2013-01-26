@@ -1,7 +1,24 @@
 .photoReportsListItem{
-	height: 60px;
+	line-height: 18px;
+	height: auto;
 }
 .photo_report_poster{
-	height: 60px;
-	width: 60px;
+	max-height: 30%;
+	max-width: 30%;
+	min-height: 60px;
+	min-width: 60px;
+}
+
+.eventInfo{
+	float: right;
+	width: 70%;
+	text-align: left;
+
+}
+
+.eventName{
+	font-size: 60%;
+}
+.companyName{
+
 }

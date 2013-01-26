@@ -16,9 +16,12 @@ define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/i18n"
 			// URL to pull tweets from; simple template included
 			serviceUrl: "http://localhost:5000/app/get/json/all",
 			// Create a template string for tweets:
-			tweetTemplateString: '<div></div><img src="{{poster}}" alt="{{event_name}}" class="photo_report_poster" />'
-				+'<div class="companyName">{{company_name}}</div></div>'
-				+'<div class="eventName">{{event_name}}</div></div>',
+			tweetTemplateString:'<div>'+
+				'<img src="{{poster}}" alt="{{event_name}}" class="photo_report_poster" />'
+				+ '<div class="eventInfo">'
+				+'<div class="companyName">{{company_name}}</div>'
+				+'<div class="eventName">{{event_name}}</div>'
+				+'</div></div>',
 			// Icon for loading...
 			iconLoading: require.toUrl("photoreports/resources/images/loading.gif"),
 
@@ -58,7 +61,7 @@ define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/i18n"
 					var context = new dtlContext({
 						'poster': photoReport.logo_image,
 						'event_name': photoReport.name,
-						'copamny_name': photoReport.company_name
+						'company_name': photoReport.company_name
 					});
 
 					item.containerNode.innerHTML = template.render(context);
