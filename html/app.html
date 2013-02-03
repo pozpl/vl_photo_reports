@@ -56,8 +56,9 @@
 
             require(["dojox/mobile/deviceTheme"], function(dm){
                 require(["dojox/mobile/parser", "dojox/mobile/TabBar", "dojox/mobile/deviceTheme" , "dojo/dom-attr",
-                    "dojo/_base/array", "photoreports/PhotoReportsList",
-                    "dojox/mobile", "dojox/mobile/ScrollableView", "dojo/domReady!"],
+                    "dojo/_base/array", "photoreports/PhotoReportsList", "photoreports/PhotoReportPhotosList",
+                    "dojox/mobile", "dojox/mobile/ScrollableView",
+                    "dojo/domReady!"],
                         function(parser, TabBar, dm, domAttr, arrayUtil) {
                             // If Android....
                             if(dm.currentTheme == "android") {
@@ -91,7 +92,7 @@
     <ul data-dojo-type="dojox.mobile.RoundRectList" class="lastReportsList"></ul>
 </div>
 
-<div id="single_photo_report" data-dojo-type="photoreports.PhotoReportsList" data-dojo-config="selected: true">
+<div id="single_photo_report_photos_grid" data-dojo-type="photoreports.PhotoReportPhotosList">
     <h1 data-dojo-type="dojox.mobile.Heading" data-dojo-props="fixed: 'top'">
         Последние фотоотчёты
     </h1>
