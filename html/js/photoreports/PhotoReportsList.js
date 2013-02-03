@@ -61,7 +61,7 @@ define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/i18n"
 					}).placeAt(lastReportsList, "first");
 
 					item.onClick = lang.hitch(this, this.transitToPhotoReportView,
-						item, photoReport.event_id,photoReport.period_id);
+						item, photoReport.event_id,photoReport.period_id, photoReport.name);
 						//function(event){this.transitToPhotoReportView(event);});
 
 					var template = new dtl.Template(this.tweetTemplateString);
@@ -79,7 +79,7 @@ define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/i18n"
 				}, this);
 			},
 
-			transitToPhotoReportView : function(listItem, eventId, periodId, event){
+			transitToPhotoReportView : function(listItem, eventId, periodId, eventName, event){
 			var photoReportView = query("#single_photo_report_photos_grid")[0]; // destination view
 
 //			var prog = ProgressIndicator.getInstance();
@@ -94,7 +94,7 @@ define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/i18n"
 				handleAs: "json",
 				load: function(response, ioArgs){
 					photoReportView.photoReportJson = response;
-					photoReportView.showPhotosList(photoReportView.photoReportJson);
+					photoReportView.showPhotosList(photoReportView.photoReportJson, eventNode);
 					//var container = view3.containerNode;
 					//container.innerHTML = response;
 					//parser.parse(container);

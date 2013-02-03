@@ -19,14 +19,15 @@ define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/i18n"
 				// Retain functionality of startup in dojox/mobile/ScrollableView
 				this.inherited(arguments);
 
-				if(this.photoReportJson && this.photoReportJson.length){
-					this.showPhotosList(this.photoReportJson);
-				}
+//				if(this.photoReportJson && this.photoReportJson.length){
+//					this.showPhotosList(this.photoReportJson);
+//				}
 			},
 
 
-			showPhotosList: function(photosJson){
-				var lastReportsList = query(".lastReportsList")[0];
+			showPhotosList: function(photosJson, eventNote){
+				var photoReportHeader = query("#single_photo_report_header")[0];
+				photoReportHeader.list = eventName;
 
 				var photosArray = photosJson.imagesInPeriod;
 
