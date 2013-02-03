@@ -6,14 +6,16 @@ define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/i18n"
 		// Return the declared class!
 		return declare("photoreports.PhotoReportPhotosList", [ScrollableView], {
 			// URL to pull tweets from; simple template included
-			serviceUrl: "http://localhost:5000/app/get/json",
+//			serviceUrl: "http://localhost:5000/app/get/json",
+			serviceUrl: "/app/get/json",
+
 			// Create a template string for tweets:
 			// Icon for loading...
 			iconLoading: require.toUrl("photoreports/resources/images/loading.gif"),
 
-			imageTemplateString:'<div class="photos_list_img"' +
-				+'style="background-image:url({{img_address}}); " '+
-				'> </div>',
+			imageTemplateString: '<div class="photos_list_padding_div">'
+				+ '<div align="center" class="photos_list_img" style="background-image:url({{img_address}})"></div>'
+				+ '</div>',
 
 			// Here will be placed information for photo report
 			photoReportJson : '',

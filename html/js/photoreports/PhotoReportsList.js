@@ -14,7 +14,8 @@ define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/i18n"
 		// Return the declared class!
 		return declare("photoreports.PhotoReportsList", [ScrollableView], {
 			// URL to pull tweets from; simple template included
-			serviceUrl: "http://localhost:5000/app/get/json/all",
+//			serviceUrl: "http://localhost:5000/app/get/json/all",
+			serviceUrl: "/app/get/json/all",
 
 			// Create a template string for tweets:
 			photoReportTemplateString:'<div>'+
