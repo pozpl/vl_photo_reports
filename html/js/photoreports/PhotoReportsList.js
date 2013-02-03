@@ -8,9 +8,9 @@
 
 define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/i18n", "dojo/dom-class",
 	"dojo/dom-attr", "dojox/mobile/ScrollableView", "dojox/mobile/ListItem", "dojo/DeferredList",
-	"dojo/request", "dijit/registry", "dojo/query", "dojox/dtl", "dojox/dtl/Context"],
+	"dojo/request", "dijit/registry", "dojo/query", "dojox/dtl", "dojox/dtl/Context","dojo/on"],
 	function(declare, arrayUtil, lang, i18n, domClass, domAttr, ScrollableView, ListItem, DeferredList,
-	         ioScript, registry, query, dtl, dtlContext, dtlTemplate) {
+	         ioScript, registry, query, dtl, dtlContext, on) {
 		// Return the declared class!
 		return declare("photoreports.PhotoReportsList", [ScrollableView], {
 			// URL to pull tweets from; simple template included
@@ -52,10 +52,17 @@ define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/i18n"
 				var lastReportsList = query(".lastReportsList")[0];
 
 				arrayUtil.forEach(photoReportsArray, function(photoReport){
+					var self = this;
 					var item = new ListItem({
 						"class": "photoReportsListItem",
-						variableHeight:true
+						variableHeight:true,
+						moveTo: '#'
+//						onClick: function(event){self.transitToPhotoReportView(event);}
 					}).placeAt(lastReportsList, "first");
+
+					item.onClick = lang.hitch(this, this.transitToPhotoReportView,
+						item, photoReport.eventId,photoReport.periodId);
+						//function(event){this.transitToPhotoReportView(event);});
 
 					var template = new dtl.Template(this.tweetTemplateString);
 					var context = new dtlContext({
@@ -65,14 +72,42 @@ define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/i18n"
 					});
 
 					item.containerNode.innerHTML = template.render(context);
-
+//					item.containerNode.on('click', function(event){
+//						alert('11');
+////						this.testFunction(event);
+//					});
 				}, this);
 			},
 
-			showLoadImage: function(){
+			transitToPhotoReportView : function(listItem, eventId, periodId, event){
+			var photoReportView = registry.byId("single_photo_report_photos_grid"); // destination view
+
+//			var prog = ProgressIndicator.getInstance();
+//			win.body().appendChild(prog.domNode);
+//			prog.start();
+
+			listItem.transitionTo("single_photo_report_photos_grid");
+
+			var url = photoReportView.serviceUrl + '/' + eventId + '/' +  periodId;
+			dojo.xhrGet({
+				url: url,
+				handleAs: "json",
+				load: function(response, ioArgs){
+					photoReportView.photoReportJson = response;
+					photoReportView.showPhotosList(photoReportView.photoReportJson);
+					//var container = view3.containerNode;
+					//container.innerHTML = response;
+					//parser.parse(container);
+					//prog.stop();
+				}
+			});
+		},
+
+
+		showLoadImage: function(){
 //				photoReportsListRefresh
 
-			}
+		}
 
 
 		});
