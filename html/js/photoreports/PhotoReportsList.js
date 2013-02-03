@@ -8,9 +8,9 @@
 
 define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/i18n", "dojo/dom-class",
 	"dojo/dom-attr", "dojox/mobile/ScrollableView", "dojox/mobile/ListItem", "dojo/DeferredList",
-	"dojo/request", "dijit/registry", "dojo/query", "dojox/dtl", "dojox/dtl/Context","dojo/on"],
+	"dojo/request", "dijit/registry", "dojo/query", "dojox/dtl", "dojox/dtl/Context"],
 	function(declare, arrayUtil, lang, i18n, domClass, domAttr, ScrollableView, ListItem, DeferredList,
-	         ioScript, registry, query, dtl, dtlContext, on) {
+	         ioScript, registry, query, dtl, dtlContext) {
 		// Return the declared class!
 		return declare("photoreports.PhotoReportsList", [ScrollableView], {
 			// URL to pull tweets from; simple template included
@@ -61,7 +61,7 @@ define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/i18n"
 					}).placeAt(lastReportsList, "first");
 
 					item.onClick = lang.hitch(this, this.transitToPhotoReportView,
-						item, photoReport.eventId,photoReport.periodId);
+						item, photoReport.event_id,photoReport.period_id);
 						//function(event){this.transitToPhotoReportView(event);});
 
 					var template = new dtl.Template(this.tweetTemplateString);
@@ -80,7 +80,7 @@ define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/i18n"
 			},
 
 			transitToPhotoReportView : function(listItem, eventId, periodId, event){
-			var photoReportView = registry.byId("single_photo_report_photos_grid"); // destination view
+			var photoReportView = query("#single_photo_report_photos_grid")[0]; // destination view
 
 //			var prog = ProgressIndicator.getInstance();
 //			win.body().appendChild(prog.domNode);
