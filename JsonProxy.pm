@@ -49,7 +49,7 @@ use LWP::Simple;
 	my $event_id  = $q->param('event_id');
     my $period_id    = $q->param('period_id');
     #    my $url = 'http://vl.ru/ajax/getlastphotoreports/party/10';
-    my $url = "http://rest.loc//ajax/event/photoreport/$event_id/$period_id";
+    my $url = "http://rest.loc/ajax/event/photoreport/$event_id/$period_id";
     my $cache_key = $url;
     my $json = $self->cache->get($cache_key);
     if(!$json){
