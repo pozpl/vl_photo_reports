@@ -22,7 +22,7 @@ use LWP::Simple;
         $self->routes_root('/'); 
         $self->routes([
             '/get/json/all' => 'get_all' ,
-            '/second.cgi'  => 'second_page',
+            '/get/json/:event_id/:period_id' => 'get_one',
         ]);
         $self->start_mode('/');
 
@@ -31,7 +31,8 @@ use LWP::Simple;
   
  sub get_all() {
     my $self = shift;
-    my $url = 'http://vl.ru/ajax/getlastphotoreports/party/10';
+#    my $url = 'http://vl.ru/ajax/getlastphotoreports/party/10';
+    my $url = 'http://rest.loc/ajax/getlastphotoreports/party/10';
     my $cache_key = $url;
     my $json = $self->cache->get($cache_key);
     if(!$json){
@@ -42,11 +43,21 @@ use LWP::Simple;
     return $json;
  }
 
-sub second_page(){
-   my $self = shift;   
-    $self->header_add( -Content_Type => 'text/html; charset=UTF-8' );
-    my $output = 'Second page';
-    return $output;   
-}
+ sub get_one(){
+    my $self  = shift;
+    my $q     = $self->query();
+	my $event_id  = $q->param('event_id');
+    my $period_id    = $q->param('period_id');
+    #    my $url = 'http://vl.ru/ajax/getlastphotoreports/party/10';
+    my $url = "http://rest.loc//ajax/event/photoreport/$event_id/$period_id";
+    my $cache_key = $url;
+    my $json = $self->cache->get($cache_key);
+    if(!$json){
+    $json = get( $url );
+    	die "Could not get $url!" unless defined $json;
+    	$self->cache->set($cache_key, $json);
+    }
+    return $json;
+ }
 
-  1;
+1;
