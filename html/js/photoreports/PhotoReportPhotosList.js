@@ -25,23 +25,13 @@ define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/i18n"
 			},
 
 
-			showPhotosList: function(photoReportsArray){
+			showPhotosList: function(photosJson){
 				var lastReportsList = query(".lastReportsList")[0];
 
-				arrayUtil.forEach(photoReportsArray, function(photoReport){
-					var item = new ListItem({
-						"class": "photoReportsListItem",
-						variableHeight:true
-					}).placeAt(lastReportsList, "first");
+				var photosArray = photosJson.imagesInPeriod;
 
-					var template = new dtl.Template(this.tweetTemplateString);
-					var context = new dtlContext({
-						'poster': photoReport.logo_image,
-						'event_name': photoReport.name,
-						'company_name': photoReport.company_name
-					});
-
-					item.containerNode.innerHTML = template.render(context);
+				arrayUtil.forEach(photosArray, function(image){
+					alert(image.imageId);
 
 				}, this);
 			},
