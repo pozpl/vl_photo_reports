@@ -57,7 +57,7 @@
             require(["dojox/mobile/deviceTheme"], function(dm){
                 require(["dojox/mobile/parser", "dojox/mobile/TabBar", "dojox/mobile/deviceTheme" , "dojo/dom-attr",
                     "dojo/_base/array", "photoreports/PhotoReportsList", "photoreports/PhotoReportPhotosList",
-                    "dojox/mobile", "dojox/mobile/ScrollableView", "dojox/mobile/GridLayout",
+                    "dojox/mobile", "dojox/mobile/ScrollableView", "dojox/mobile/GridLayout", "dojox/mobile/compat",
                     "dojo/domReady!"],
                         function(parser, TabBar, dm, domAttr, arrayUtil) {
                             // If Android....
@@ -97,7 +97,7 @@
         data-dojo-props="fixed: 'top', back: 'Фотоотчёты', moveTo: 'last_photoreports' ">
         Последние фотоотчёты
     </h1>
-    <div data-dojo-type="dojox.mobile.GridLayout" class="photos_grid" data-dojo-props='cols:4'></div>
+    <div data-dojo-type="dojox.mobile.GridLayout" class="photos_grid" data-dojo-props='cols:0'></div>
 </div>
 
 </body>
