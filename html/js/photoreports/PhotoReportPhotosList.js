@@ -32,8 +32,9 @@ define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/i18n"
 
 
 			showPhotosList: function(photosJson, eventName){
-				var photoReportHeader = query("#single_photo_report_header")[0];
-				photoReportHeader.list = eventName;
+				var photoReportHeader = registry.byNode(query("#single_photo_report_header")[0]);
+//				photoReportHeader.label = eventName;
+				photoReportHeader.set("label", eventName);
 
 				var photosArray = photosJson.imagesInPeriod;
 				var photosGrid = registry.byNode(query('.photos_grid')[0]);
