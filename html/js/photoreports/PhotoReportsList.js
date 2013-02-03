@@ -17,7 +17,7 @@ define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/i18n"
 			serviceUrl: "http://localhost:5000/app/get/json/all",
 
 			// Create a template string for tweets:
-			tweetTemplateString:'<div>'+
+			photoReportTemplateString:'<div>'+
 				'<img src="{{poster}}" alt="{{event_name}}" class="photo_report_poster"  align="left"/>'
 				+ '<div class="eventInfo">'
 				+'<div class="companyName">{{company_name}}</div>'
@@ -65,7 +65,7 @@ define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/i18n"
 						item, photoReport.event_id,photoReport.period_id, photoReport.name);
 						//function(event){this.transitToPhotoReportView(event);});
 
-					var template = new dtl.Template(this.tweetTemplateString);
+					var template = new dtl.Template(this.photoReportTemplateString);
 					var context = new dtlContext({
 						'poster': photoReport.logo_image,
 						'event_name': photoReport.name,
@@ -92,9 +92,7 @@ define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/i18n"
 				url: url,
 				handleAs: "json",
 				load: function(response, ioArgs){
-					photoReportView.photoReportJson = response;
-
-					photoReportView.showPhotosList(photoReportView.photoReportJson, eventName);
+					photoReportView.showPhotosList(response, eventName);
 					//var container = view3.containerNode;
 					//container.innerHTML = response;
 					//parser.parse(container);
