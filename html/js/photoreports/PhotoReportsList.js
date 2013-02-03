@@ -15,6 +15,7 @@ define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/i18n"
 		return declare("photoreports.PhotoReportsList", [ScrollableView], {
 			// URL to pull tweets from; simple template included
 			serviceUrl: "http://localhost:5000/app/get/json/all",
+
 			// Create a template string for tweets:
 			tweetTemplateString:'<div>'+
 				'<img src="{{poster}}" alt="{{event_name}}" class="photo_report_poster"  align="left"/>'
@@ -80,21 +81,20 @@ define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/i18n"
 			},
 
 			transitToPhotoReportView : function(listItem, eventId, periodId, eventName, event){
-			var photoReportView = query("#single_photo_report_photos_grid")[0]; // destination view
+			var photoReportView = registry.byId("single_photo_report_photos_grid"); // destination view
 
 //			var prog = ProgressIndicator.getInstance();
 //			win.body().appendChild(prog.domNode);
 //			prog.start();
-
 			listItem.transitionTo("single_photo_report_photos_grid");
-
 			var url = photoReportView.serviceUrl + '/' + eventId + '/' +  periodId;
 			dojo.xhrGet({
 				url: url,
 				handleAs: "json",
 				load: function(response, ioArgs){
 					photoReportView.photoReportJson = response;
-					photoReportView.showPhotosList(photoReportView.photoReportJson, eventNode);
+
+					photoReportView.showPhotosList(photoReportView.photoReportJson, eventName);
 					//var container = view3.containerNode;
 					//container.innerHTML = response;
 					//parser.parse(container);
