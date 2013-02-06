@@ -1,8 +1,9 @@
 define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/i18n", "dojo/dom-class",
 	"dojo/dom-attr", "dojox/mobile/ScrollableView", "dojox/mobile/ListItem", "dojo/DeferredList",
-	"dojo/request", "dijit/registry", "dojo/query", "dojox/dtl", "dojox/dtl/Context", "dojox/mobile/Pane"],
+	"dojo/request", "dijit/registry", "dojo/query", "dojox/dtl", "dojox/dtl/Context", "dojox/mobile/Pane",
+	"dojo/dom-construct"],
 	function(declare, arrayUtil, lang, i18n, domClass, domAttr, ScrollableView, ListItem, DeferredList,
-	         ioScript, registry, query, dtl, dtlContext, Pane) {
+	         ioScript, registry, query, dtl, dtlContext, Pane, domConstruct) {
 		// Return the declared class!
 		return declare("photoreports.PhotoReportPhotosList", [ScrollableView], {
 			// URL to pull tweets from; simple template included
@@ -28,6 +29,10 @@ define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/i18n"
 //				if(this.photoReportJson && this.photoReportJson.length){
 //					this.showPhotosList(this.photoReportJson);
 //				}
+				dojo.connect(this, "onBeforeTransitionIn", null,
+					function(moveTo, dir, transition, context, method){
+						query(".photos_grid").forEach(domConstruct.empty);
+				});
 			},
 
 
@@ -49,9 +54,6 @@ define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/i18n"
 					});
 
 					pane.containerNode.innerHTML = template.render(context);
-					//var button1 = new Button({label:"Button 1", class:"mblBlueButton"});
-					//button1.placeAt(pane1.containerNode);
-					//button1.startup();
 
 				}, this);
 			},
