@@ -18,8 +18,8 @@ define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/i18n"
 			serviceUrl: "/app/get/json/all",
 
 			// Create a template string for tweets:
-			photoReportTemplateString:'<div>'+
-				'<img src="{{poster}}" alt="{{event_name}}" class="photo_report_poster"  align="left"/>'
+			photoReportTemplateString:'<div class="events_list_item">'+
+				'<div class="thumb"><img src="{{poster}}" alt="{{event_name}}" class="photo_report_poster"  align="left"/></div>'
 				+ '<div class="eventInfo">'
 				+'<div class="companyName">{{company_name}}</div>'
 				+'<div class="eventName">{{event_name}}</div>'
