@@ -1,9 +1,9 @@
 define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/i18n", "dojo/dom-class",
 	"dojo/dom-attr", "dojox/mobile/ScrollableView", "dojox/mobile/ListItem", "dojo/DeferredList",
 	"dojo/request", "dijit/registry", "dojo/query", "dojox/dtl", "dojox/dtl/Context", "dojox/mobile/Pane",
-	"dojo/dom-construct"],
+	"dojo/dom-construct", "dojo/on"],
 	function(declare, arrayUtil, lang, i18n, domClass, domAttr, ScrollableView, ListItem, DeferredList,
-	         ioScript, registry, query, dtl, dtlContext, Pane, domConstruct) {
+	         ioScript, registry, query, dtl, dtlContext, Pane, domConstruct, on) {
 		// Return the declared class!
 		return declare("photoreports.PhotoReportPhotosList", [ScrollableView], {
 			// URL to pull tweets from; simple template included
@@ -54,7 +54,11 @@ define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/i18n"
 					});
 
 					pane.containerNode.innerHTML = template.render(context);
-
+					on(pane.containerNode, 'click', lang.hitch(this, function(){
+						var photoCarousel = registry.byId("photo_carousel_view");
+						photoCarousel.setPhotoReportStore(photosArray);
+						this.performTransition("photo_carousel_view");
+					}))
 				}, this);
 			},
 
