@@ -17,8 +17,12 @@ define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/i18n"
 
 			setPhotoReportStore: function(photosArray) {
 				var preparedImagesArray = new Array();
-				arrayUtil.forEach(photosArray, function(image){
-
+				arrayUtil.forEach(photosArray, function(image, imageIndex){
+					preparedImagesArray[imageIndex] = {
+						'src' : image.imageFilePathMiddle,
+						'value' : '',
+						'headerText' : imageIndex
+					}
 
 				}, this)
 			}
