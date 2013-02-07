@@ -59,7 +59,7 @@
                     "dojo/_base/array",
                     "photoreports/PhotoReportsList", "photoreports/PhotoReportPhotosList", "photoreports/PhotoCarousel",
                     "dojox/mobile", "dojox/mobile/ScrollableView", "dojox/mobile/GridLayout", "dojox/mobile/compat",
-                    "dojo/domReady!"],
+                     "dojox/mobile/StoreCarousel", "dojo/domReady!"],
                         function(parser, TabBar, dm, domAttr, arrayUtil) {
                             // If Android....
                             if(dm.currentTheme == "android") {
@@ -100,9 +100,13 @@
     <div data-dojo-type="dojox.mobile.GridLayout" class="photos_grid" data-dojo-props='cols:0'></div>
 </div>
 
-<div id="photo_carousel" data-dojo-type="photoreports.PhotoCarousel">
-
+<div id="photo_carousel_view" data-dojo-type="photoreports.PhotoCarousel" >
+    <h1 id="carousel_photo_report_header" data-dojo-type="dojox.mobile.Heading"
+        data-dojo-props="fixed: 'top', back: 'Назад', moveTo: 'single_photo_report_photos_grid' ">
+    </h1>
+    <div id="photo_carousel" data-dojo-type="dojox.mobile.StoreCarousel"
+         data-dojo-props='numVisible:1, height: "inherit" '>
+    </div>
 </div>
-
 </body>
 </html>
