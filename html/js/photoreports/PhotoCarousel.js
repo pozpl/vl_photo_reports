@@ -36,7 +36,7 @@ define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/i18n"
 				var preparedImagesArray = new Array();
 				arrayUtil.forEach(photosArray, function(image, imageIndex){
 					preparedImagesArray[imageIndex] = {
-						'src' : 'http://img.vl.ru/i/catalog/' + image.imageFilePathMiddle,
+						'src' : 'http://img.vl.ru/i/catalog/' + image.imageFilePathBig,
 						'value' : '',
 						'headerText' : ''
 					};
