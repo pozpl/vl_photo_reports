@@ -56,7 +56,8 @@
 
             require(["dojox/mobile/deviceTheme"], function(dm){
                 require(["dojox/mobile/parser", "dojox/mobile/TabBar", "dojox/mobile/deviceTheme" , "dojo/dom-attr",
-                    "dojo/_base/array", "photoreports/PhotoReportsList", "photoreports/PhotoReportPhotosList",
+                    "dojo/_base/array",
+                    "photoreports/PhotoReportsList", "photoreports/PhotoReportPhotosList", "photoreports/PhotoCarousel",
                     "dojox/mobile", "dojox/mobile/ScrollableView", "dojox/mobile/GridLayout", "dojox/mobile/compat",
                     "dojo/domReady!"],
                         function(parser, TabBar, dm, domAttr, arrayUtil) {
@@ -97,6 +98,10 @@
         data-dojo-props="fixed: 'top', back: 'Фотоотчёты', moveTo: 'last_photoreports' ">
     </h1>
     <div data-dojo-type="dojox.mobile.GridLayout" class="photos_grid" data-dojo-props='cols:0'></div>
+</div>
+
+<div id="photo_carousel" data-dojo-type="photoreports.PhotoCarousel">
+
 </div>
 
 </body>
