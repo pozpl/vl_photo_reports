@@ -7,15 +7,19 @@ define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/i18n"
 			//Store to get
 			photoReportStore : {},
 
-			photoCarousel: registry.byId("photo_carousel"),
 			// When the widgets have started....
 			startup: function() {
 				// Retain functionality of startup in dojox/mobile/ScrollableView
 				this.inherited(arguments);
 
-//				this.photoCarousel = registry.byId("photo_carousel");
-//				photoCarousel.setPhotoReportStore(photosArray);
-				photoCarousel.startup();
+
+				dojo.connect(this, "onBeforeTransitionIn", null,
+					function(moveTo, dir, transition, context, method){
+						var photoCarousel = registry.byId("photo_carousel");
+						photoCarousel.setStore(this.photoReportStore);
+						photoCarousel.startup();
+				});
+
 
 //				var photoCarousel = new StoreCarousel({
 //					store: sampleStore,
@@ -41,7 +45,6 @@ define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/i18n"
 				this.photoReportStore = new Memory({data: {
 					'items': preparedImagesArray
 				}});
-				this.photoCarousel.setStore(this.photoReportStore);
 			}
 
 		});
