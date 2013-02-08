@@ -1,34 +1,19 @@
 define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/i18n", "dojo/dom-class",
-	"dojo/dom-attr","dojox/mobile/View", "dojo/store/Memory", "dijit/registry"],
+	"dojo/dom-attr","dojox/mobile/View", "dojox/mobile/SwapView", "dojo/store/Memory", "dijit/registry"],
 	function(declare, arrayUtil, lang, i18n, domClass, domAttr, View,
 	         Memory, registry) {
 		// Return the declared class!
 		return declare("photoreports.PhotoCarousel", [View], {
 			//Store to get
 			photoReportStore : {},
+			//swapViews
+			swapViewsArray : new Array(),
 
 			// When the widgets have started....
 			startup: function() {
-				// Retain functionality of startup in dojox/mobile/ScrollableView
+				// Retain functionality of startup in dojox/mobile/View
 				this.inherited(arguments);
 
-
-				dojo.connect(this, "onBeforeTransitionIn", null,
-					function(moveTo, dir, transition, context, method){
-						var photoCarousel = registry.byId("photo_carousel");
-						photoCarousel.setStore(this.photoReportStore);
-						photoCarousel.startup();
-					});
-
-
-//				var photoCarousel = new StoreCarousel({
-//					store: sampleStore,
-//					height: "150px",
-//					navButton: true,
-//					numVisible: 2,
-//					title: "Category"
-//				}, "carousel1");
-//				carousel.startup();
 			},
 
 
@@ -42,9 +27,17 @@ define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/i18n"
 					};
 
 				}, this);
-				this.photoReportStore = new Memory({data: {
-					'items': preparedImagesArray
-				}});
+				this.photoReportStore = preparedImagesArray;
+			},
+			//function to destroy previous swap views
+			destroyCurrentSwapViews: function(){
+				arrayUtil.forEach(this.swapViewsArray, function(swapView, index){
+					swapView.destroy();
+				})
+			},
+
+			createSwapViewsForData: function(){
+
 			}
 
 		});
