@@ -1,8 +1,8 @@
 define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/i18n", "dojo/dom-class",
-	"dojo/dom-attr","dojox/mobile/View", "dojox/mobile/SwapView", "dojo/store/Memory", "dijit/registry",
+	"dojo/dom-attr","dojox/mobile/View", "dojox/mobile/SwapView", "dijit/registry",
 	"dojox/dtl", "dojox/dtl/Context"],
-	function(declare, arrayUtil, lang, i18n, domClass, domAttr, View,
-	         Memory, registry, dtl, dtlContext) {
+	function(declare, arrayUtil, lang, i18n, domClass, domAttr, View, SwapView,
+	         registry, dtl, dtlContext) {
 		// Return the declared class!
 		return declare("photoreports.PhotoSlideShow", [View], {
 			//Store to get
@@ -49,13 +49,12 @@ define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/i18n"
 					});
 					this.addChild(swapViewNew);
 
-//					var template = new dtl.Template(this.imageTemplateString);
-//					var context = new dtlContext({
-//						'src': image.src
-//					});
-					var imageTag = '<img src="' + image.src +'"/>';
+					var template = new dtl.Template(this.imageTemplateString);
+					var context = new dtlContext({
+						'src': image.src
+					});
 
-					swapViewNew.containerNode.innerHTML = imageTag;//template.render(context);
+					swapViewNew.containerNode.innerHTML = template.render(context);
 					this.swapViewsArray.push(swapViewNew);
 				}, this);
 
