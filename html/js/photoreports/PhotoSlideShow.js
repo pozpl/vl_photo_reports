@@ -49,12 +49,13 @@ define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/i18n"
 					});
 					this.addChild(swapViewNew);
 
-					var template = new dtl.Template(this.imageTemplateString);
-					var context = new dtlContext({
-						'src': image.src
-					});
+//					var template = new dtl.Template(this.imageTemplateString);
+//					var context = new dtlContext({
+//						'src': image.src
+//					});
+					var imageTag = '<img src="' + image.src +'"/>';
 
-					swapViewNew.containerNode.innerHTML = template.render(context);
+					swapViewNew.containerNode.innerHTML = imageTag;//template.render(context);
 					this.swapViewsArray.push(swapViewNew);
 				}, this);
 
