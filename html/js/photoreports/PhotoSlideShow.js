@@ -1,16 +1,16 @@
 define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/i18n", "dojo/dom-class",
-	"dojo/dom-attr","dojox/mobile/View", "dojox/mobile/SwapView", "dijit/registry",
+	"dojo/dom-attr","dojox/mobile/ScrollableView", "dojox/mobile/SwapView", "dijit/registry",
 	"dojox/dtl", "dojox/dtl/Context"],
-	function(declare, arrayUtil, lang, i18n, domClass, domAttr, View, SwapView,
+	function(declare, arrayUtil, lang, i18n, domClass, domAttr, ScrollableView, SwapView,
 	         registry, dtl, dtlContext) {
 		// Return the declared class!
-		return declare("photoreports.PhotoSlideShow", [View], {
+		return declare("photoreports.PhotoSlideShow", [ScrollableView], {
 			//Store to get
 			photoReportStore : {},
 			//swapViews
 			swapViewsArray : new Array(),
 
-			imageTemplateString: '<img src="{{src}}"/>',
+			imageTemplateString: '<div class="slide_show_item"><img src="{{src}}"/><div>',
 
 			// When the widgets have started....
 			startup: function() {
