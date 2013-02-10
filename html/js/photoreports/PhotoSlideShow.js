@@ -11,6 +11,8 @@ define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/i18n"
 			swapViewsArray : new Array(),
 			//current period id
 			currentPeriodId: 0,
+			//active image id to show
+			activeImageId: 0,
 
 			imageTemplateString: '<div class="slide_show_item">' +
 				'<div class="img_container" style="background-image: url({{src}})">&nbsp;' +
@@ -41,6 +43,7 @@ define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/i18n"
 					this.destroyCurrentSwapViews();
 					this.createSwapViewsForData();
 					this.currentPeriodId = periodId;
+					this.activeImageId = activeImageIndex;
 				}
 			},
 			//function to destroy previous swap views
