@@ -60,3 +60,8 @@
 	margin-left: auto;
 	margin-right: auto;
 }
+
+.slide_show_item .img_container .padding_left_top{
+	padding-left: 100%;
+	padding-bottom: 100%;
+}

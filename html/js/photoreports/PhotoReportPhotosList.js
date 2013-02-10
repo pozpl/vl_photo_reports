@@ -29,14 +29,16 @@ define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/i18n"
 //				if(this.photoReportJson && this.photoReportJson.length){
 //					this.showPhotosList(this.photoReportJson);
 //				}
-				dojo.connect(this, "onBeforeTransitionIn", null,
-					function(moveTo, dir, transition, context, method){
-						query(".photos_grid").forEach(domConstruct.empty);
-				});
+//				dojo.connect(this, "onBeforeTransitionIn", null,
+//					function(moveTo, dir, transition, context, method){
+//						query(".photos_grid").forEach(domConstruct.empty);
+//				});
 			},
 
 
 			showPhotosList: function(photosJson, eventName){
+				query(".photos_grid").forEach(domConstruct.empty);
+
 				var photoReportHeader = registry.byNode(query("#single_photo_report_header")[0]);
 //				photoReportHeader.label = eventName;
 				photoReportHeader.set("label", eventName);

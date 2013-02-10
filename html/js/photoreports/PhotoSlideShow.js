@@ -12,7 +12,7 @@ define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/i18n"
 
 			imageTemplateString: '<div class="slide_show_item">' +
 				'<div class="img_container" style="background-image: url({{src}})">&nbsp;' +
-				'<div style="padding-left: 100%">' +
+				'<div class="padding_left_top">' +
 				'</div><div>',
 
 			// When the widgets have started....
