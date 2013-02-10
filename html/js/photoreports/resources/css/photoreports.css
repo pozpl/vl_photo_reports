@@ -43,11 +43,8 @@
 }
 
 .slide_show_item{
-	min-height: 50px;
-	height: inherit;
-	width: inherit;
-	display: table-cell;
-	vertical-align: middle;
+	height: 100%;
+	width: 100%;
 }
 
 .slide_show_item .img_container{
