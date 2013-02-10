@@ -41,3 +41,22 @@
 	background-position: center;
 	background-repeat: no-repeat;
 }
+
+.slide_show_item{
+	min-height: 50px;
+	height: inherit;
+	width: inherit;
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.slide_show_item .img_container{
+	height: inherit;
+	width: inherit;
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+
+	margin-left: auto;
+	margin-right: auto;
+}

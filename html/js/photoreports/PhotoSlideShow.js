@@ -10,7 +10,10 @@ define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/i18n"
 			//swapViews
 			swapViewsArray : new Array(),
 
-			imageTemplateString: '<div class="slide_show_item"><img src="{{src}}"/><div>',
+			imageTemplateString: '<div class="slide_show_item">' +
+				'<div class="img_container" style="background-image: url({{src}})">&nbsp;' +
+				'<div style="padding-left: 100%">' +
+				'</div><div>',
 
 			// When the widgets have started....
 			startup: function() {
