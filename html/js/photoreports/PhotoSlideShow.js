@@ -37,9 +37,11 @@ define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/i18n"
 
 					}, this);
 					this.photoReportStore = preparedImagesArray;
+
+					this.destroyCurrentSwapViews();
+					this.createSwapViewsForData();
+					this.currentPeriodId = periodId;
 				}
-				this.destroyCurrentSwapViews();
-				this.createSwapViewsForData();
 			},
 			//function to destroy previous swap views
 			destroyCurrentSwapViews: function(){
@@ -48,7 +50,7 @@ define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/i18n"
 				});
 			},
 
-			createSwapViewsForData: function(){console.log('create bunch of swap views');
+			createSwapViewsForData: function(){
 				arrayUtil.forEach(this.photoReportStore, function(image, index){
 					var swapViewId = this.id + "swap_view" + index;
 					var swapViewNew=new dojox.mobile.SwapView({
@@ -65,6 +67,11 @@ define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/i18n"
 					this.swapViewsArray.push(swapViewNew);
 				}, this);
 
+			},
+
+			showSwapViewWithIndex: function(imageToShowIndex){
+				var swapViewWidget  = registry.byId(this.id + "swap_view" + imageToShowIndex);
+				swapViewWidget.show();
 			}
 
 		});
