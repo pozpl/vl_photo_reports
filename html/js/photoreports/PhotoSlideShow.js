@@ -24,6 +24,10 @@ define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/i18n"
 				// Retain functionality of startup in dojox/mobile/View
 				this.inherited(arguments);
 
+				dojo.connect(this, "onAfterTransitionIn", null,
+					function(moveTo, dir, transition, context, method){
+						this.showSwapViewWithIndex(this.activeImageId);
+				});
 			},
 
 
@@ -74,7 +78,9 @@ define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/i18n"
 
 			showSwapViewWithIndex: function(imageToShowIndex){
 				var swapViewWidget  = registry.byId(this.id + "swap_view" + imageToShowIndex);
-				swapViewWidget.show();
+				if(swapViewWidget && swapViewWidget.length){
+					swapViewWidget.show();
+				}
 			}
 
 		});
