@@ -36,7 +36,7 @@ define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/i18n"
 			},
 
 
-			showPhotosList: function(photosJson, eventName){
+			showPhotosList: function(photosJson, eventName, periodId){
 				query(".photos_grid").forEach(domConstruct.empty);
 
 				var photoReportHeader = registry.byNode(query("#single_photo_report_header")[0]);
@@ -46,7 +46,7 @@ define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/i18n"
 				var photosArray = photosJson.imagesInPeriod;
 				var photosGrid = registry.byNode(query('.photos_grid')[0]);
 
-				arrayUtil.forEach(photosArray, function(image){
+				arrayUtil.forEach(photosArray, function(image, imageindex){
 					var pane = new Pane();
 					photosGrid.addChild(pane);
 
@@ -58,7 +58,7 @@ define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/i18n"
 					pane.containerNode.innerHTML = template.render(context);
 					on(pane.containerNode, 'click', lang.hitch(this, function(){
 						var photoCarousel = registry.byId("photo_carousel_view");
-						photoCarousel.setPhotoReportStore(photosArray);
+						photoCarousel.setPhotoReportStore(photosArray, periodId, imageindex);
 						this.performTransition("photo_carousel_view");
 					}))
 				}, this);

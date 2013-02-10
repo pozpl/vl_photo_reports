@@ -9,6 +9,8 @@ define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/i18n"
 			photoReportStore : {},
 			//swapViews
 			swapViewsArray : new Array(),
+			//current period id
+			currentPeriodId: 0,
 
 			imageTemplateString: '<div class="slide_show_item">' +
 				'<div class="img_container" style="background-image: url({{src}})">&nbsp;' +
@@ -23,17 +25,19 @@ define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/i18n"
 			},
 
 
-			setPhotoReportStore: function(photosArray) {console.log('set');
-				var preparedImagesArray = new Array();
-				arrayUtil.forEach(photosArray, function(image, imageIndex){
-					preparedImagesArray[imageIndex] = {
-						'src' : 'http://img.vl.ru/i/catalog/' + image.imageFilePathBig,
-						'value' : '',
-						'headerText' : ''
-					};
+			setPhotoReportStore: function(photosArray, periodId, activeImageIndex) {
+				if(this.currentPeriodId != periodId){
+					var preparedImagesArray = new Array();
+					arrayUtil.forEach(photosArray, function(image, imageIndex){
+						preparedImagesArray[imageIndex] = {
+							'src' : 'http://img.vl.ru/i/catalog/' + image.imageFilePathBig,
+							'value' : '',
+							'headerText' : ''
+						};
 
-				}, this);
-				this.photoReportStore = preparedImagesArray;
+					}, this);
+					this.photoReportStore = preparedImagesArray;
+				}
 				this.destroyCurrentSwapViews();
 				this.createSwapViewsForData();
 			},

@@ -93,7 +93,7 @@ define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/i18n"
 				url: url,
 				handleAs: "json",
 				load: function(response, ioArgs){
-					photoReportView.showPhotosList(response, eventName);
+					photoReportView.showPhotosList(response, eventName, periodId);
 					//var container = view3.containerNode;
 					//container.innerHTML = response;
 					//parser.parse(container);
