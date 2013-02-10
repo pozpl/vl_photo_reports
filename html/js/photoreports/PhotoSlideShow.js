@@ -1,8 +1,8 @@
 define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/i18n", "dojo/dom-class",
 	"dojo/dom-attr","dojox/mobile/ScrollableView", "dojox/mobile/SwapView", "dijit/registry",
-	"dojox/dtl", "dojox/dtl/Context"],
+	"dojox/dtl", "dojox/dtl/Context", "dojo/query"],
 	function(declare, arrayUtil, lang, i18n, domClass, domAttr, ScrollableView, SwapView,
-	         registry, dtl, dtlContext) {
+	         registry, dtl, dtlContext, query) {
 		// Return the declared class!
 		return declare("photoreports.PhotoSlideShow", [ScrollableView], {
 			//Store to get
@@ -47,14 +47,15 @@ define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/i18n"
 					this.destroyCurrentSwapViews();
 					this.createSwapViewsForData();
 					this.currentPeriodId = periodId;
-					this.activeImageId = activeImageIndex;
 				}
+				this.activeImageId = activeImageIndex;
 			},
 			//function to destroy previous swap views
 			destroyCurrentSwapViews: function(){
 				arrayUtil.forEach(this.swapViewsArray, function(swapView, index){
 					swapView.destroy();
 				});
+				this.swapViewsArray = new Array();
 			},
 
 			createSwapViewsForData: function(){
@@ -76,11 +77,12 @@ define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/i18n"
 
 			},
 
-			showSwapViewWithIndex: function(imageToShowIndex){
-				var swapViewWidget  = registry.byId(this.id + "swap_view" + imageToShowIndex);
-				if(swapViewWidget && swapViewWidget.length){
-					swapViewWidget.show();
-				}
+			showSwapViewWithIndex: function(imageToShowIndex){console.log(this.id + "swap_view" + imageToShowIndex);
+//				var swapViewWidget  = query("#" + this.id + "swap_view" + imageToShowIndex)[0];
+//				if(swapViewWidget && swapViewWidget.length){console.log(this.id + "swap_view" + imageToShowIndex);
+//					swapViewWidget.show();
+//				}
+				this.swapViewsArray[imageToShowIndex].show();
 			}
 
 		});
