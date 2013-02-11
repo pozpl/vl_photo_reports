@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+
+    <!-- prevent cache -->
+    <!--<meta http-equiv="cache-control" content="no-cache">-->
+    <!--<meta http-equiv="pragma" content="no-cache">-->
+
+    <title>Photo reports Lite</title>
+    <link href="//ajax.googleapis.com/ajax/libs/dojo/1.8.1/dojox/mobile/themes/iphone/iphone.css"
+          rel="stylesheet"/>
+
+    <!-- stylesheet will go here -->
+    <style>
+            /* vertically center the image */
+        .tweetviewRefresh img {
+            margin-top: 6px;
+        }
+    </style>
+    <link href="js/photoreports/resources/css/photoreports.css" rel="stylesheet"/>
+
+
+    <!-- dojo/javascript will go here -->
+    <script type="text/javascript">
+
+        var dojoConfig = (function(){
+            var base = location.href.split("/");
+            base.pop();
+            base = base.join("/");
+
+            return {
+                async: true,
+                isDebug: true,
+                packages: [{
+                    name: "photoreports",
+                    location: base + "/js/photoreports"
+                }
+                    ,
+                    {
+                        name:'custom',
+                        location: base + "/js/custom/PhotoReportBadgeWidget"
+                    }
+                ]
+            };
+        })();
+
+    </script>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/dojo/1.8.3/dojo/dojo.js"
+            data-dojo-config="async:true"></script>
+    <script>
+        (function(){
+
+            require(["dojox/mobile/deviceTheme"], function(dm){
+                require(["dojox/mobile/parser", "dojox/mobile/TabBar",
+//                    "dojox/mobile/deviceTheme" ,
+                    "dojo/dom-attr",
+                    "dojo/_base/array",
+                    "photoreports/PhotoReportsList", "photoreports/PhotoReportPhotosList", "photoreports/PhotoSlideShow",
+                    "dojox/mobile", "dojox/mobile/ScrollableView", "dojox/mobile/GridLayout", "dojox/mobile/compat",
+                     "dojo/domReady!"],
+                        function(parser, TabBar,
+//                                 dm,
+                                 domAttr, arrayUtil) {
+                            // If Android....
+//                            if(dm.currentTheme == "android") {
+//                                var imagePath = "js/tweetview/resources/images/";
+//                                // Add a new "iconLoading" attribute to the TweetView instances
+//                                TweetView.prototype.iconLoading = imagePath + "androidLoading.gif";
+//                                // Update image path on bottom tabbar
+//                                domAttr.set(document.getElementById("tabBar"), "iconBase", imagePath + "iconStripAndroid.png");
+//                            }
+                            // Parse the page!
+                            parser.parse();
+                        });
+            });
+
+
+        })();
+    </script>
+
+</head>
+<body>
+
+<!-- photoreports view -->
+<div id="last_photoreports" data-dojo-type="photoreports.PhotoReportsList" data-dojo-config="selected: true">
+    <h1 data-dojo-type="dojox.mobile.Heading" data-dojo-props="fixed: 'top'">
+        <!-- the refresh button -->
+        <div data-dojo-type="dojox.mobile.ToolBarButton"
+             data-dojo-props="icon:'../../js/photoreports/resources/images/refresh.png'"
+             class="mblDomButton photoReportsListRefresh"></div>
+        Последние фотоотчёты
+    </h1>
+    <ul data-dojo-type="dojox.mobile.RoundRectList" class="lastReportsList"></ul>
+</div>
+
+<div id="single_photo_report_photos_grid" data-dojo-type="photoreports.PhotoReportPhotosList">
+    <h1 id="single_photo_report_header" data-dojo-type="dojox.mobile.Heading"
+        data-dojo-props="fixed: 'top', back: 'Фотоотчёты', moveTo: 'last_photoreports' ">
+    </h1>
+    <div data-dojo-type="dojox.mobile.GridLayout" class="photos_grid" data-dojo-props='cols:0'></div>
+</div>
+
+<div id="photo_carousel_view" data-dojo-type="photoreports.PhotoSlideShow" >
+    <h1 id="carousel_photo_report_header" data-dojo-type="dojox.mobile.Heading"
+        data-dojo-props="fixed: 'top', back: 'Назад', moveTo: 'single_photo_report_photos_grid' ">
+    </h1>
+    <div id="photo_swap_views">
+    </div>
+</div>
+</body>
+</html>
