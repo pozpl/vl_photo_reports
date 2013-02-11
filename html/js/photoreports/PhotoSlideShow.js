@@ -77,7 +77,7 @@ define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/i18n"
 
 			},
 
-			showSwapViewWithIndex: function(imageToShowIndex){console.log(this.id + "swap_view" + imageToShowIndex);
+			showSwapViewWithIndex: function(imageToShowIndex){
 //				var swapViewWidget  = query("#" + this.id + "swap_view" + imageToShowIndex)[0];
 //				if(swapViewWidget && swapViewWidget.length){console.log(this.id + "swap_view" + imageToShowIndex);
 //					swapViewWidget.show();
