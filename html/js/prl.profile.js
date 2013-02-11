@@ -69,8 +69,8 @@ var profile = {
 		"native-xhr":true,
 		"array-extensible":true,
 		"ie":undefined,
-		"quirks":false,
-		"webkit":true
+		"quirks":false
+//		"webkit":true
 	},
 
 	packages:[
