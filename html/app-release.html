@@ -10,7 +10,7 @@
     <!--<meta http-equiv="pragma" content="no-cache">-->
 
     <title>Photo reports Lite</title>
-    <link href="//ajax.googleapis.com/ajax/libs/dojo/1.8.1/dojox/mobile/themes/iphone/iphone.css"
+    <link href="js/photoreports-release/dojo/dojox/mobile/themes/iphone/iphone.css"
           rel="stylesheet"/>
 
     <!-- stylesheet will go here -->
@@ -20,7 +20,7 @@
             margin-top: 6px;
         }
     </style>
-    <link href="js/photoreports/resources/css/photoreports.css" rel="stylesheet"/>
+    <link href="js/photoreports-release/dojo/photoreports/resources/css/photoreports.css" rel="stylesheet"/>
 
 
     <!-- dojo/javascript will go here -->
@@ -36,20 +36,15 @@
                 isDebug: true,
                 packages: [{
                     name: "photoreports",
-                    location: base + "/js/photoreports"
+                    location: base + "/js/photoreports-release/dojo/photoreports"
                 }
-                    ,
-                    {
-                        name:'custom',
-                        location: base + "/js/custom/PhotoReportBadgeWidget"
-                    }
                 ]
             };
         })();
 
     </script>
 
-    <script src="http://ajax.googleapis.com/ajax/libs/dojo/1.8.3/dojo/dojo.js"
+    <script src="/js/photoreports-release/dojo/dojo/dojo.js"
             data-dojo-config="async:true"></script>
     <script>
         (function(){
