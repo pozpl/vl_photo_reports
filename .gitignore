@@ -3,4 +3,7 @@ html/js/dojo
 html/js/dijit
 html/js/dojox
 html/js/util
+cpanm
+carton.lock
+local
 
