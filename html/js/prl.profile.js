@@ -9,7 +9,7 @@ var profile = {
 	"copyTests":false,
 	"cssOptimize":"comments.keepLines",
 	"mini":true,
-	"webkitMobile":true,
+//	"webkitMobile":true,
 
 	localeList:"en-us",
 
