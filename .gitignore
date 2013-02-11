@@ -6,4 +6,5 @@ html/js/util
 cpanm
 carton.lock
 local
+html/js/photoreports-release
 
