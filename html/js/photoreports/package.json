@@ -26,5 +26,5 @@
 	},
 	"main": "src",
 	"homepage": "http://urbancamper.ru/",
-	"dojoBuild": "prl.profile.js"
+	"dojoBuild": "photoreports.profile.js"
 }
