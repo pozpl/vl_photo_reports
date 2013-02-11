@@ -7,6 +7,8 @@ my $build = Module::Build->new
      requires => {
           CGI::Application::Plugin::Routes => 0,
           CGI::Application::Plugin::Cache::File => 0,
+          Plack => 0,
+          Starman => 0,
      },
  );
 $build->create_build_script();
