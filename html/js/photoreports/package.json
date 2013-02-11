@@ -1,0 +1,30 @@
+{
+	"name": "Photo Reports Lite",
+	"description": "Photo reports VL.ru",
+	"version": "1.0",
+	"keywords": ["JavaScript", "Dojo", "Toolkit", "DojoX"],
+	"maintainers": [{
+		"name": "Pavel Pozdniak"
+	}],
+	"contributors": [{
+		"name": "Pavel Pozdniak"
+	}],
+	"licenses": [{
+		"type": "BSD",
+		"url": "http://bugs.dojotoolkit.org/browser/dojox/trunk/LICENSE#L13"
+	}],
+	"bugs": "https://urbancamper.ru",
+	"repositories": [{
+		"type": "git",
+		"url": "https://bitbucket.org/pozpl/photoreportslite",
+		"path": "packages/photreportslite"
+	}],
+	"dependencies": {
+		"dojo": "~1.8.1",
+		"dijit": "~1.8.1",
+		"dojox": "~1.8.1"
+	},
+	"main": "src",
+	"homepage": "http://urbancamper.ru/",
+	"dojoBuild": "prl.profile.js"
+}
