@@ -46,13 +46,15 @@ var profile = {
 				"dojox/mobile/ListItem",
 				"dojo/dom-class",
 				"dojo/dom-attr",
-				"dojox/mobile/SwapView"
+				"dojox/mobile/SwapView",
+				"dojox/mobile/GridLayout"
 			]
 		},
-		"tweetview/tweetview-app":{
+		"photoreports/photoreports-app":{
 			include:[
-				"tweetview/TweetView",
-				"tweetview/SettingsView"
+				"photoreports/PhotoReportsList",
+				"photoreports/PhotoReportPhotosList",
+				"photoreports/PhotoSlideShow"
 			]
 		}
 	},
@@ -75,6 +77,6 @@ var profile = {
 		{ name:"dojo", location:"dojo" },
 		{ name:"dijit", location:"dijit" },
 		{ name:"dojox", location:"dojox" },
-		{ name:"tweetview", location:"tweetview" }
+		{ name:"photoreports", location:"photoreports" }
 	]
 };
