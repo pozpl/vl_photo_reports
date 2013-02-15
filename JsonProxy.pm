@@ -31,8 +31,8 @@ use LWP::Simple;
   
  sub get_all() {
     my $self = shift;
-#    my $url = 'http://vl.ru/ajax/getlastphotoreports/party/10';
-    my $url = 'http://rest.loc/ajax/getlastphotoreports/party/10';
+    my $url = 'http://vl.ru/ajax/getlastphotoreports/party/10';
+    #my $url = 'http://rest.loc/ajax/getlastphotoreports/party/10';
     my $cache_key = $url;
     my $json = $self->cache->get($cache_key);
     if(!$json){
@@ -48,8 +48,8 @@ use LWP::Simple;
     my $q     = $self->query();
 	my $event_id  = $q->param('event_id');
     my $period_id    = $q->param('period_id');
-    #    my $url = 'http://vl.ru/ajax/getlastphotoreports/party/10';
-    my $url = "http://rest.loc/ajax/event/photoreport/$event_id/$period_id";
+    my $url = "http://rest.vl.ru/ajax/event/photoreport/$event_id/$period_id";
+#    my $url = "http://rest.loc/ajax/event/photoreport/$event_id/$period_id";
     my $cache_key = $url;
     my $json = $self->cache->get($cache_key);
     if(!$json){
