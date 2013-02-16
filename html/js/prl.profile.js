@@ -47,7 +47,11 @@ var profile = {
 				"dojo/dom-class",
 				"dojo/dom-attr",
 				"dojox/mobile/SwapView",
-				"dojox/mobile/GridLayout"
+				"dojox/mobile/GridLayout",
+                "dojox/mobile/TabBar",
+                "dojox/mobile/compat",
+                "dojox/mobile/TabBarButton",
+                "dojox/mobile/Badge"
 			]
 		},
 		"photoreports/photoreports-app":{
