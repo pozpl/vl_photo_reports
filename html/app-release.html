@@ -48,14 +48,17 @@
             data-dojo-config="async:true"></script>
     <script>
         (function(){
-            require(["dojox/mobile/parser", "dojox/mobile/TabBar",
-                "dojo/dom-attr",
-                "dojo/_base/array",
-                "photoreports/PhotoReportsList", "photoreports/PhotoReportPhotosList", "photoreports/PhotoSlideShow",
-                "dojox/mobile", "dojox/mobile/ScrollableView", "dojox/mobile/GridLayout", "dojox/mobile/compat",
-                "dojo/domReady!"],
-                    function(parser) {
-                        parser.parse();
+            require(["photoreports/photoreports-app"],
+                    function() {
+                        require(["dojox/mobile/parser", "dojox/mobile/TabBar",
+                            "dojo/dom-attr",
+                            "dojo/_base/array",
+                            "photoreports/PhotoReportsList", "photoreports/PhotoReportPhotosList", "photoreports/PhotoSlideShow",
+                            "dojox/mobile", "dojox/mobile/ScrollableView", "dojox/mobile/GridLayout", "dojox/mobile/compat",
+                            "dojo/domReady!"],
+                                function(parser) {
+                                    parser.parse();
+                                });
                     });
         })();
     </script>
