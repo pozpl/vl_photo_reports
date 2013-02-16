@@ -48,32 +48,15 @@
             data-dojo-config="async:true"></script>
     <script>
         (function(){
-
-            require(["dojox/mobile/deviceTheme"], function(dm){
-                require(["dojox/mobile/parser", "dojox/mobile/TabBar",
-//                    "dojox/mobile/deviceTheme" ,
-                    "dojo/dom-attr",
-                    "dojo/_base/array",
-                    "photoreports/PhotoReportsList", "photoreports/PhotoReportPhotosList", "photoreports/PhotoSlideShow",
-                    "dojox/mobile", "dojox/mobile/ScrollableView", "dojox/mobile/GridLayout", "dojox/mobile/compat",
-                     "dojo/domReady!"],
-                        function(parser, TabBar,
-//                                 dm,
-                                 domAttr, arrayUtil) {
-                            // If Android....
-//                            if(dm.currentTheme == "android") {
-//                                var imagePath = "js/tweetview/resources/images/";
-//                                // Add a new "iconLoading" attribute to the TweetView instances
-//                                TweetView.prototype.iconLoading = imagePath + "androidLoading.gif";
-//                                // Update image path on bottom tabbar
-//                                domAttr.set(document.getElementById("tabBar"), "iconBase", imagePath + "iconStripAndroid.png");
-//                            }
-                            // Parse the page!
-                            parser.parse();
-                        });
-            });
-
-
+            require(["dojox/mobile/parser", "dojox/mobile/TabBar",
+                "dojo/dom-attr",
+                "dojo/_base/array",
+                "photoreports/PhotoReportsList", "photoreports/PhotoReportPhotosList", "photoreports/PhotoSlideShow",
+                "dojox/mobile", "dojox/mobile/ScrollableView", "dojox/mobile/GridLayout", "dojox/mobile/compat",
+                "dojo/domReady!"],
+                    function(parser) {
+                        parser.parse();
+                    });
         })();
     </script>
 
