@@ -14,7 +14,7 @@ var profile = {
 	localeList:"en-us",
 
 	layers:{
-		"dojo/dojo":{
+		"core/dojo":{
 			customBase:true,
 			include:[
 				"dojo/_base/declare",
@@ -54,12 +54,13 @@ var profile = {
                 "dojox/mobile/Badge"
 			]
 		},
-		"photoreports/photoreports-app":{
+		"app/photoreports-app":{
 			include:[
 				"photoreports/PhotoReportsList",
 				"photoreports/PhotoReportPhotosList",
 				"photoreports/PhotoSlideShow"
-			]
+			],
+            exclude:["dojo/dojo"]
 		}
 	},
 
