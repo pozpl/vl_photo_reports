@@ -7,16 +7,19 @@ var profile = {
 	"selectorEngine":"acme",
 	"stripConsole":"normal",
 	"copyTests":false,
-	"cssOptimize":"comments.keepLines",
+	"cssOptimize":true,
 	"mini":true,
 //	"webkitMobile":true,
 
 	localeList:"en-us",
 
 	layers:{
-		"core/dojo":{
+		"dojo/dojo":{
 			customBase:true,
 			include:[
+                "dojo/dojo",
+                'dojo/domReady',
+                "dojo/require",
 				"dojo/_base/declare",
 				"dojo/_base/lang",
 				"dojo/_base/array",
@@ -59,8 +62,7 @@ var profile = {
 				"photoreports/PhotoReportsList",
 				"photoreports/PhotoReportPhotosList",
 				"photoreports/PhotoSlideShow"
-			],
-            exclude:["dojo/dojo"]
+			]
 		}
 	},
 
