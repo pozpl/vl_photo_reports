@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="utf-8">
     <meta name="viewport"
           content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
     <meta name="apple-mobile-web-app-capable" content="yes"/>
@@ -35,20 +36,23 @@
                 async: true,
                 isDebug: true,
                 packages: [{
-                    name: "photoreports",
-                    location: base + "/js/photoreports-release/dojo/photoreports"
-                }
-                ]
+                    name: "app",
+                    location: base + "/js/photoreports-release/app"
+                }, {
+                    name: "core",
+                    location: base + "/js/photoreports-release/core"
+                }]
             };
         })();
 
     </script>
 
-    <script src="/js/photoreports-release/dojo/dojo/dojo.js"
-            data-dojo-config="async:true"></script>
+    <!--<script src="/js/photoreports-release/core/dojo.js"  data-dojo-config="async:true"></script>-->
+    <script src="js/photoreports-release/dojo/dojo/dojo.js"  data-dojo-config="async:true"></script>
+
     <script>
         (function(){
-            require(["photoreports/photoreports-app"],
+            require(["app/photoreports-app"],
                     function() {
                         require(["dojox/mobile/parser", "dojox/mobile/TabBar",
                             "dojo/dom-attr",
