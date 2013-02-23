@@ -71,7 +71,8 @@
 <body>
 
 <!-- photoreports view -->
-<div id="last_photoreports" data-dojo-type="photoreports.PhotoReportsList" data-dojo-config="selected: true">
+<div id="last_photoreports" data-dojo-type="photoreports.PhotoReportsList" data-dojo-config="selected: true"
+        data-dojo-props="serviceUrl:'http://urbancamper.ru:5000/app/get/json/all'">
     <h1 data-dojo-type="dojox.mobile.Heading" data-dojo-props="fixed: 'top'">
         <!-- the refresh button -->
         <div data-dojo-type="dojox.mobile.ToolBarButton"
@@ -82,7 +83,8 @@
     <ul data-dojo-type="dojox.mobile.RoundRectList" class="lastReportsList"></ul>
 </div>
 
-<div id="single_photo_report_photos_grid" data-dojo-type="photoreports.PhotoReportPhotosList">
+<div id="single_photo_report_photos_grid" data-dojo-type="photoreports.PhotoReportPhotosList"
+     data-dojo-props="serviceUrl:'http://urbancamper.ru:5000/app/get/json/all'">
     <h1 id="single_photo_report_header" data-dojo-type="dojox.mobile.Heading"
         data-dojo-props="fixed: 'top', back: 'Фотоотчёты', moveTo: 'last_photoreports' ">
     </h1>
