@@ -8,7 +8,7 @@
 
 define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/i18n", "dojo/dom-class",
 	"dojo/dom-attr", "dojox/mobile/ScrollableView", "dojox/mobile/ListItem", "dojo/DeferredList",
-	"dojo/request", "dijit/registry", "dojo/query", "dojox/dtl", "dojox/dtl/Context"],
+	"dojo/io/script", "dijit/registry", "dojo/query", "dojox/dtl", "dojox/dtl/Context"],
 	function(declare, arrayUtil, lang, i18n, domClass, domAttr, ScrollableView, ListItem, DeferredList,
 	         ioScript, registry, query, dtl, dtlContext) {
 		// Return the declared class!
@@ -37,12 +37,13 @@ define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/i18n"
 			},
 
 			refreshPhotoReportsList: function(){
-				var photoReportsDeferred = ioScript.get(this.serviceUrl, {
-//					jsonp: "callback",
-					preventCache: false,
-					timeout: 4000,
-					handleAs: 'json'
-				});
+				var photoReportsDeferred = ioScript.get(
+                    {
+                        url: this.serviceUrl,
+//				handleAs: "json",
+                        callbackParamName: "callback",
+                        timeout: 6000
+                    });
 				photoReportsDeferred.then(lang.hitch(this,function(data){
 					this.showPhotoReports(data);
 				}),function(err){
@@ -89,9 +90,11 @@ define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/i18n"
 //			prog.start();
 			listItem.transitionTo("single_photo_report_photos_grid");
 			var url = photoReportView.serviceUrl + '/' + eventId + '/' +  periodId;
-			dojo.xhrGet({
+			ioScript.get({
 				url: url,
-				handleAs: "json",
+//				handleAs: "json",
+                callbackParamName: "callback",
+                timeout: 6000,
 				load: function(response, ioArgs){
 					photoReportView.showPhotosList(response, eventName, periodId);
 					//var container = view3.containerNode;
