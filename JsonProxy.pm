@@ -40,7 +40,8 @@ use LWP::Simple;
 		die "Could not get $url!" unless defined $json;
 		$self->cache->set($cache_key, $json);
     }
-    return $json;
+    $json_callback = 'c( $json)';
+    return $json_callback;
  }
 
  sub get_one(){
@@ -57,7 +58,8 @@ use LWP::Simple;
     	die "Could not get $url!" unless defined $json;
     	$self->cache->set($cache_key, $json);
     }
-    return $json;
+    $json_callback = 'c( $json)';
+    return $json_callback;
  }
 
 1;
