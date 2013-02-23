@@ -31,8 +31,12 @@ use LWP::Simple;
   
  sub get_all() {
     my $self = shift;
+    my $q     = $self->query();
+    my $event_id  = $q->param('event_id');
+    my $callback_function_name = $q->param('callback');
     my $url = 'http://vl.ru/ajax/getlastphotoreports/party/10';
     #my $url = 'http://rest.loc/ajax/getlastphotoreports/party/10';
+
     my $cache_key = $url;
     my $json = $self->cache->get($cache_key);
     if(!$json){
@@ -40,7 +44,7 @@ use LWP::Simple;
 		die "Could not get $url!" unless defined $json;
 		$self->cache->set($cache_key, $json);
     }
-    $json_callback = 'c( $json)';
+    my $json_callback = "$callback_function_name( $json)";
     return $json_callback;
  }
 
@@ -49,6 +53,7 @@ use LWP::Simple;
     my $q     = $self->query();
 	my $event_id  = $q->param('event_id');
     my $period_id    = $q->param('period_id');
+    my $callback_function_name = $q->param('callback');
     my $url = "http://rest.vl.ru/ajax/event/photoreport/$event_id/$period_id";
 #    my $url = "http://rest.loc/ajax/event/photoreport/$event_id/$period_id";
     my $cache_key = $url;
@@ -58,7 +63,7 @@ use LWP::Simple;
     	die "Could not get $url!" unless defined $json;
     	$self->cache->set($cache_key, $json);
     }
-    $json_callback = 'c( $json)';
+    my $json_callback = "$callback_function_name( $json)";
     return $json_callback;
  }
 
