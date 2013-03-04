@@ -52,7 +52,7 @@
                 <fileset file="${basedir}/JsonProxy.pm"/>
                 <fileset file="${basedir}/cpanm"/>
                 <fileset file="${basedir}/carton.lock"/>
-                <fileset file="${basedir}/Build.PL"/>
+                <fileset file="${basedir}/cpanfile"/>
             </copy>
             <!--Delete unnecessary staff-->
             <delete includeemptydirs="true">
