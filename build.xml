@@ -7,6 +7,8 @@
     </taskdef>
     <property name="release.dir" value="${basedir}/html/js/photoreports-release"/>
     <property name="js.source.path" value="${basedir}/html/js"/>
+    <property name="web.build.path" value="${basedir}/web_build"/>
+
 
     <target name="clean" description="Delete all generated files">
         <delete dir="${release.dir}" failonerror="false"/>
@@ -30,6 +32,27 @@
             </exec>
         </sequential>
         </outofdate>
+    </target>
+
+    <target name="build-web" depends="compile">
+        <sequential>
+            <delete dir="${web.build.path}"/>
+            <mkdir dir="${web.build.path}/html/js"/>
+            <copy todir="${web.build.path}/html/js">
+               <fileset dir="${release.dir}/"/>
+            </copy>
+            <copy todir="${web.build.path}/html">
+                <fileset file="${basedir}/html/app-release.html"/>
+            </copy>
+            <copy todir="${web.build.path}">
+                <fileset file="${basedir}/app.psgi"/>
+                <fileset file="${basedir}/JsonProxy.pm"/>
+                <fileset file="${basedir}/cpanm"/>
+                <fileset file="${basedir}/carton.lock"/>
+                <fileset file="${basedir}/Build.PL"/>
+            </copy>
+        </sequential>
+
     </target>
 
 
