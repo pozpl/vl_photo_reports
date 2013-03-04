@@ -55,7 +55,7 @@
                 <fileset file="${basedir}/Build.PL"/>
             </copy>
             <!--Delete unnecessary staff-->
-            <delete>
+            <delete includeemptydirs="true">
                 <fileset dir="${web.build.path.built.js.release}/dojo">
                     <include name="**/*"/>
                     <excludesfile name="${web.build.path.built.js.release}/dojo/dojox/mobile/themes/iphone/iphone.css"/>
