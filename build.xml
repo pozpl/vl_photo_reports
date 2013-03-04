@@ -59,6 +59,7 @@
                 <fileset dir="${web.build.path.built.js.release}/dojo">
                     <include name="**"/>
                     <exclude name="dojox/mobile/themes/iphone/iphone.css"/>
+                    <exclude name="dojox/mobile/themes/iphone/iphone-compat.css"/>
                     <exclude name="dojo/dojo.js"/>
                     <exclude name="photoreports/resources/**" />
                 </fileset>

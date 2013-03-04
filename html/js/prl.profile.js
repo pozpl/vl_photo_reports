@@ -27,6 +27,7 @@ var profile = {
 				"dojo/_base/event",
 				"dojo/_base/connect",
 				"dojo/_base/html",
+				"dojo/fx",
 				"dojo/io/script",
 				"dojo/Deferred",
 				"dojo/DeferredList",
@@ -53,9 +54,9 @@ var profile = {
 				"dojox/mobile/GridLayout",
                 "dojox/mobile/TabBar",
                 "dojox/mobile/compat",
+                "dojox/mobile/_compat",
                 "dojox/mobile/TabBarButton",
-                "dojox/mobile/Badge",
-                "dojox/mobile/compat"
+                "dojox/mobile/Badge"
 			]
 		},
 		"app/photoreports-app":{
