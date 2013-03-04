@@ -8,4 +8,5 @@ carton.lock
 local
 html/js/photoreports-release
 .carton
+lib
 
