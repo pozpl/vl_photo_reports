@@ -1,15 +1,20 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <project name="PhotoReportsLite" basedir="." default="compile">
-
-    <property name="release.dir" value="html/js/photoreports-release"/>
-    <property name="js.source.path" value="html/js"/>
-
+    <taskdef resource="net/sf/antcontrib/antcontrib.properties">
+        <classpath>
+            <pathelement location="${basedir}/lib/ant-contrib.jar"/>
+        </classpath>
+    </taskdef>
+    <property name="release.dir" value="${basedir}/html/js/photoreports-release"/>
+    <property name="js.source.path" value="${basedir}/html/js"/>
 
     <target name="clean" description="Delete all generated files">
         <delete dir="${release.dir}" failonerror="false"/>
     </target>
 
     <target name="compile" description="Compiles the Task">
+        <outofdate>
+
         <exec dir="${js.source.path}/util/buildscripts/" executable="${js.source.path}/util/buildscripts/build.sh">
             <arg line="releaseDir=${release.dir}/"/>
             <arg line="profileFile=${js.source.path}/prl.profile.js"/>
@@ -18,6 +23,7 @@
             <arg line="action=release"/>
             <arg line="optimize=shrinksafe"/>
         </exec>
+        </outofdate>
     </target>
 
 
