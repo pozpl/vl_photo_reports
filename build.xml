@@ -14,15 +14,21 @@
 
     <target name="compile" description="Compiles the Task">
         <outofdate>
-
-        <exec dir="${js.source.path}/util/buildscripts/" executable="${js.source.path}/util/buildscripts/build.sh">
-            <arg line="releaseDir=${release.dir}/"/>
-            <arg line="profileFile=${js.source.path}/prl.profile.js"/>
-            <arg line="releaseName=photo-reports-lite"/>
-            <arg line="copyTests=false"/>
-            <arg line="action=release"/>
-            <arg line="optimize=shrinksafe"/>
-        </exec>
+        <sourcefiles>
+           <fileset dir="${js.source.path}/photoreports" includes="**"/>
+           <fileset file="${js.source.path}/prl.profile.js"/>
+        </sourcefiles>
+        <targetfiles path="${release.dir}"/>
+        <sequential>
+            <exec dir="${js.source.path}/util/buildscripts/" executable="${js.source.path}/util/buildscripts/build.sh">
+                <arg line="releaseDir=${release.dir}/"/>
+                <arg line="profileFile=${js.source.path}/prl.profile.js"/>
+                <arg line="releaseName=photo-reports-lite"/>
+                <arg line="copyTests=false"/>
+                <arg line="action=release"/>
+                <arg line="optimize=shrinksafe"/>
+            </exec>
+        </sequential>
         </outofdate>
     </target>
 
