@@ -57,9 +57,10 @@
             <!--Delete unnecessary staff-->
             <delete includeemptydirs="true">
                 <fileset dir="${web.build.path.built.js.release}/dojo">
-                    <include name="**/*"/>
-                    <excludesfile name="${web.build.path.built.js.release}/dojo/dojox/mobile/themes/iphone/iphone.css"/>
-                    <excludesfile name="${web.build.path.built.js.release}/dojo/dojo/dojo.js"/>
+                    <include name="**"/>
+                    <exclude name="**/dojox/mobile/themes/iphone/iphone.css"/>
+                    <exclude name="**/dojo/dojo.js"/>
+                    <exclude name="**/photoreports/resources"/>
                 </fileset>
             </delete>
         </sequential>
