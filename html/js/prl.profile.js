@@ -54,7 +54,8 @@ var profile = {
                 "dojox/mobile/TabBar",
                 "dojox/mobile/compat",
                 "dojox/mobile/TabBarButton",
-                "dojox/mobile/Badge"
+                "dojox/mobile/Badge",
+                "dojox/mobile/compat"
 			]
 		},
 		"app/photoreports-app":{
