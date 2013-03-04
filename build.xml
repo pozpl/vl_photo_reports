@@ -5,20 +5,19 @@
     <property name="js.source.path" value="html/js"/>
 
 
-    <exec dir="${js.source.path}/util/buildscripts/" executable="${js.source.path}/util/buildscripts/build.sh">
-        <arg line="releaseDir=${release.dir}/"/>
-        <arg line="profileFile=${js.source.path}/prl.profile.js"/>
-        <arg line="releaseName=photo-reports-lite"/>
-        <arg line="copyTests=false"/>
-        <arg line="action=release"/>
-        <arg line="optimize=shrinksafe"/>
-    </exec>
-
     <target name="clean" description="Delete all generated files">
         <delete dir="${release.dir}" failonerror="false"/>
     </target>
 
     <target name="compile" description="Compiles the Task">
+        <exec dir="${js.source.path}/util/buildscripts/" executable="${js.source.path}/util/buildscripts/build.sh">
+            <arg line="releaseDir=${release.dir}/"/>
+            <arg line="profileFile=${js.source.path}/prl.profile.js"/>
+            <arg line="releaseName=photo-reports-lite"/>
+            <arg line="copyTests=false"/>
+            <arg line="action=release"/>
+            <arg line="optimize=shrinksafe"/>
+        </exec>
     </target>
 
 
