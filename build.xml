@@ -1,17 +1,12 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<project name="MyTask" basedir="." default="jar">
+<project name="PhotoReportsLite" basedir="." default="compile">
 
     <target name="clean" description="Delete all generated files">
-        <delete dir="html/js/photoreports-release"/>
-        <delete file="MyTasks.jar"/>
+        <delete dir="html/js/photoreports-release" failonerror="false"/>
     </target>
 
     <target name="compile" description="Compiles the Task">
-        <javac srcdir="src" destdir="classes"/>
     </target>
 
-    <target name="jar" description="JARs the Task">
-        <jar destfile="MyTask.jar" basedir="classes"/>
-    </target>
 
 </project>
