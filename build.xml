@@ -83,13 +83,6 @@
             <copy todir="${android.build.path}/html">
                 <fileset file="${basedir}/html/app-release.html"/>
             </copy>
-            <copy todir="${android.build.path}">
-                <fileset file="${basedir}/app.psgi"/>
-                <fileset file="${basedir}/JsonProxy.pm"/>
-                <fileset file="${basedir}/cpanm"/>
-                <fileset file="${basedir}/carton.lock"/>
-                <fileset file="${basedir}/cpanfile"/>
-            </copy>
             <!--Delete unnecessary staff-->
             <delete includeemptydirs="true">
                 <fileset dir="${android.build.path.built.js.release}/dojo">
