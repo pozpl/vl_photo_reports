@@ -10,10 +10,14 @@
     <property name="web.build.path" value="${basedir}/web_build"/>
     <property name="web.build.path.built.js.release" value="${web.build.path}/html/js/photoreports-release"/>
 
+    <property name="android.build.path" value="${basedir}/android_build"/>
+    <property name="android.build.path.built.js.release" value="${android.build.path}/html/js/photoreports-release"/>
+
 
     <target name="clean" description="Delete all generated files">
         <delete dir="${release.dir}" failonerror="false"/>
         <delete dir="${web.build.path}" failonerror="false"/>
+        <delete dir="${android.build.path}" failonerror="false"/>
     </target>
 
     <target name="compile" description="Compiles the Task">
@@ -68,5 +72,36 @@
 
     </target>
 
+    <target name="build-android" depends="compile">
+        <sequential>
+            <delete dir="${android.build.path}"/>
+            <mkdir dir="${android.build.path}/html/js"/>
+            <!--copy staff into build direcotry-->
+            <copy todir="${android.build.path.built.js.release}">
+                <fileset dir="${release.dir}"/>
+            </copy>
+            <copy todir="${android.build.path}/html">
+                <fileset file="${basedir}/html/app-release.html"/>
+            </copy>
+            <copy todir="${android.build.path}">
+                <fileset file="${basedir}/app.psgi"/>
+                <fileset file="${basedir}/JsonProxy.pm"/>
+                <fileset file="${basedir}/cpanm"/>
+                <fileset file="${basedir}/carton.lock"/>
+                <fileset file="${basedir}/cpanfile"/>
+            </copy>
+            <!--Delete unnecessary staff-->
+            <delete includeemptydirs="true">
+                <fileset dir="${android.build.path.built.js.release}/dojo">
+                    <include name="**"/>
+                    <exclude name="dojox/mobile/themes/iphone/iphone.css"/>
+                    <exclude name="dojox/mobile/themes/iphone/iphone-compat.css"/>
+                    <exclude name="dojo/dojo.js"/>
+                    <exclude name="photoreports/resources/**" />
+                </fileset>
+            </delete>
+        </sequential>
+
+    </target>
 
 </project>
