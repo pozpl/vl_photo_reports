@@ -1,10 +1,10 @@
 define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/i18n", "dojo/dom-class",
-	"dojo/dom-attr","dojox/mobile/ScrollableView", "dojox/mobile/SwapView", "dijit/registry",
+	"dojo/dom-attr","dojox/mobile/View", "dojox/mobile/SwapView", "dijit/registry",
 	"dojox/dtl", "dojox/dtl/Context", "dojo/query"],
-	function(declare, arrayUtil, lang, i18n, domClass, domAttr, ScrollableView, SwapView,
+	function(declare, arrayUtil, lang, i18n, domClass, domAttr, View, SwapView,
 	         registry, dtl, dtlContext, query) {
 		// Return the declared class!
-		return declare("photoreports.PhotoSlideShow", [ScrollableView], {
+		return declare("photoreports.PhotoSlideShow", [View], {
 			//Store to get
 			photoReportStore : {},
 			//swapViews
