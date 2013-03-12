@@ -10,4 +10,5 @@ html/js/photoreports-release
 .carton
 lib
 web_build
+android_build
 
