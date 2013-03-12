@@ -38,6 +38,7 @@ var profile = {
 				"dojox/mobile",
 				"dojox/mobile/parser",
 				"dojox/mobile/ScrollableView",
+				"dojox/mobile/View",
 				"dojo/DeferredList",
 				"dojo/request",
 				"dijit/registry",
