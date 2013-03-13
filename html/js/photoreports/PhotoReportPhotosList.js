@@ -59,7 +59,7 @@ define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/i18n"
 					on(pane.containerNode, 'click', lang.hitch(this, function(){
 						var photoCarousel = registry.byId("photo_carousel_view");
 						photoCarousel.setPhotoReportStore(photosArray, periodId, imageindex);
-						this.performTransition("photo_carousel_view");
+						this.performTransition("#photo_carousel_view");
 					}))
 				}, this);
 			},

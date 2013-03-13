@@ -88,7 +88,7 @@ define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/i18n"
 //			var prog = ProgressIndicator.getInstance();
 //			win.body().appendChild(prog.domNode);
 //			prog.start();
-			listItem.transitionTo("single_photo_report_photos_grid");
+			listItem.transitionTo("#single_photo_report_photos_grid");
 			var url = photoReportView.serviceUrl + '/' + eventId + '/' +  periodId;
 			ioScript.get({
 				url: url,

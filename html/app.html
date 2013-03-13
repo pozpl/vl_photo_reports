@@ -52,7 +52,7 @@
     </script>
 
     <script src="//ajax.googleapis.com/ajax/libs/dojo/1.8.3/dojo/dojo.js"
-            data-dojo-config="async:true"></script>
+            data-dojo-config="async:true, mblForceBookmarkable:true"></script>
     <script>
         (function(){
 
@@ -61,8 +61,10 @@
                     "dojo/_base/array",
                     "photoreports/PhotoReportsList", "photoreports/PhotoReportPhotosList", "photoreports/PhotoSlideShow",
                     "dojox/mobile", "dojox/mobile/ScrollableView", "dojox/mobile/GridLayout", "dojox/mobile/compat",
+                     'dojox/mobile/bookmarkable',
                      "dojo/domReady!"],
                         function(parser) {
+                            window.location.hash = 'last_photoreports';//mark first
                             parser.parse();
                         });
         })();
@@ -87,14 +89,14 @@
 <div id="single_photo_report_photos_grid" data-dojo-type="photoreports.PhotoReportPhotosList">
      <!--data-dojo-props="serviceUrl:'http://urbancamper.ru:5000/app/get/json/all'">-->
     <h1 id="single_photo_report_header" data-dojo-type="dojox.mobile.Heading"
-        data-dojo-props="fixed: 'top', back: 'Фотоотчёты', moveTo: 'last_photoreports' ">
+        data-dojo-props="fixed: 'top', back: 'Фотоотчёты', moveTo: '#last_photoreports' ">
     </h1>
     <div data-dojo-type="dojox.mobile.GridLayout" class="photos_grid" data-dojo-props='cols:0'></div>
 </div>
 
 <div id="photo_carousel_view" data-dojo-type="photoreports.PhotoSlideShow" >
     <h1 id="carousel_photo_report_header" data-dojo-type="dojox.mobile.Heading"
-        data-dojo-props="fixed: 'top', back: 'Назад', moveTo: 'single_photo_report_photos_grid' ">
+        data-dojo-props="fixed: 'top', back: 'Назад', moveTo: '#single_photo_report_photos_grid' ">
     </h1>
     <div id="photo_swap_views">
     </div>
