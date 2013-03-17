@@ -60,13 +60,18 @@
                     "dojo/dom-attr",
                     "dojo/_base/array",
                     "photoreports/PhotoReportsList", "photoreports/PhotoReportPhotosList", "photoreports/PhotoSlideShow",
+                    "photoreports/DeviceSpecificFunctions",
                     "dojox/mobile", "dojox/mobile/ScrollableView", "dojox/mobile/GridLayout", "dojox/mobile/compat",
                      'dojox/mobile/bookmarkable',
                      "dojo/domReady!"],
                         function(parser) {
                             window.location.hash = 'last_photoreports';//mark first
                             parser.parse();
+
+                            deviceSpecificFunctions = new DeviceSpecificFunctions();
+                            deviceSpecificFunctions.startDeviceSpecificEventsHandlers();
                         });
+
         })();
     </script>
 
