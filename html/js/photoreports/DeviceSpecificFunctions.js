@@ -11,6 +11,22 @@ define(["dojo/_base/declare", "dojo/query"],
         // Return the declared class!
         return declare("photoreports.DeviceSpecificFunctions", {
 
+            startDeviceSpecificEventsHandlers: function(){
+                document.addEventListener("deviceready", onDeviceReady, false);
+                console.log('Start!');
+            },
+
+
+            onDeviceReady: function(){
+                document.addEventListener("backbutton", backKeyDown, true);
+                console.log('REady!');
+            },
+
+            backKeyDown: function(){
+                // do something here if you wish
+                console.log('go back!');
+            }
+
         });
 
-});
+    });
