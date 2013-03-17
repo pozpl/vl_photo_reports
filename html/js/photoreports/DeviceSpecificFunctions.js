@@ -6,19 +6,23 @@
  * To change this template use File | Settings | File Templates.
  */
 
-define(["dojo/_base/declare", "dojo/query"],
-    function(declare, query) {
+define(["dojo/_base/declare", "dojo/_base/lang", "dojo/query"],
+    function(declare, lang,query) {
         // Return the declared class!
-        return declare("photoreports.DeviceSpecificFunctions", {
+        return declare("photoreports.DeviceSpecificFunctions", null, {
+
+            constructor: function(){
+
+            },
 
             startDeviceSpecificEventsHandlers: function(){
-                document.addEventListener("deviceready", onDeviceReady, false);
+                lang.hitch(this, document.addEventListener("deviceready", this.onDeviceReady, false));
                 console.log('Start!');
             },
 
 
             onDeviceReady: function(){
-                document.addEventListener("backbutton", backKeyDown, true);
+                lang.hitch(this, document.addEventListener("backbutton", this.backKeyDown, true));
                 console.log('REady!');
             },
 
