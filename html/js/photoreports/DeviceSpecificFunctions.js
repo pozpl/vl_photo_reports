@@ -7,12 +7,9 @@
  */
 
 define(["dojo/_base/declare", "dojo/query"],
-    function(declare, arrayUtil, lang, i18n, domClass, domAttr, ScrollableView, ListItem, DeferredList,
-             ioScript, registry, query, dtl, dtlContext) {
+    function(declare, query) {
         // Return the declared class!
-        return declare("photoreports.PhotoReportsList", [ScrollableView], {
-
-
+        return declare("photoreports.DeviceSpecificFunctions", {
 
         });
 
