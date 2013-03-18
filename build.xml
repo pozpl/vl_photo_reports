@@ -51,6 +51,9 @@
             <copy todir="${web.build.path}/html">
                 <fileset file="${basedir}/html/app-release.html"/>
             </copy>
+            <copy todir="${android.build.path}/html/js">
+                <fileset file="${basedir}/html/js/cordova-2.5.0.js"/>
+            </copy>
             <copy todir="${web.build.path}">
                 <fileset file="${basedir}/app.psgi"/>
                 <fileset file="${basedir}/JsonProxy.pm"/>
