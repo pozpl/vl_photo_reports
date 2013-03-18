@@ -11,8 +11,10 @@ define(["dojo/_base/declare", "dojo/_base/lang", "dojo/query"],
         // Return the declared class!
         return declare("photoreports.DeviceSpecificFunctions", null, {
 
-            constructor: function(){
+            firstScreenHash: '',
 
+            constructor: function(firstScreenHash){
+                 this.firstScreenHash = firstScreenHash;
             },
 
             startDeviceSpecificEventsHandlers: function(){
@@ -28,7 +30,15 @@ define(["dojo/_base/declare", "dojo/_base/lang", "dojo/query"],
 
             backKeyDown: function(){
                 // do something here if you wish
-                console.log('go back!');
+                var windowHash = window.location.hash;
+                if(windowHash.indexOf(this.firstScreenHash) !== -1){
+                     console.log('Close Application');
+                    if (navigator.app && navigator.app.exitApp) {
+                        navigator.app.exitApp();
+                    } else if (navigator.device && navigator.device.exitApp) {
+                        navigator.device.exitApp();
+                    }
+                }
             }
 
         });
