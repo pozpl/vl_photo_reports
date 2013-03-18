@@ -83,6 +83,9 @@
             <copy todir="${android.build.path}/html">
                 <fileset file="${basedir}/html/app-release.html"/>
             </copy>
+            <copy todir="${android.build.path}/html/js">
+                <fileset file="${basedir}/html/js/cordova-2.5.0.js"/>
+            </copy>
             <!--Delete unnecessary staff-->
             <delete includeemptydirs="true">
                 <fileset dir="${android.build.path.built.js.release}/dojo">
