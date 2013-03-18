@@ -57,14 +57,16 @@ var profile = {
                 "dojox/mobile/compat",
                 "dojox/mobile/_compat",
                 "dojox/mobile/TabBarButton",
-                "dojox/mobile/Badge"
+                "dojox/mobile/Badge",
+                "dojox/mobile/bookmarkable"
 			]
 		},
 		"app/photoreports-app":{
 			include:[
 				"photoreports/PhotoReportsList",
 				"photoreports/PhotoReportPhotosList",
-				"photoreports/PhotoSlideShow"
+				"photoreports/PhotoSlideShow",
+                "photoreports/DeviceSpecificFunctions"
 			]
 		}
 	},
