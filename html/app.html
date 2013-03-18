@@ -67,8 +67,9 @@
                             window.location.hash = 'last_photoreports';//mark first
                             parser.parse();
 
-                            var deviceSpecFunctions = new DeviceSpecificFunctions();
-                            deviceSpecFunctions.startDeviceSpecificEventsHandlers();
+                            var deviceSpecFunctions = new DeviceSpecificFunctions('last_photoreports');
+//                            deviceSpecFunctions.startDeviceSpecificEventsHandlers();
+                            deviceSpecFunctions.onDeviceReady();
                         });
 
         })();
