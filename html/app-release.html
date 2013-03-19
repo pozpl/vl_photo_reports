@@ -37,10 +37,10 @@
                 isDebug: true,
                 packages: [{
                     name: "app",
-                    location: base + "/js/photoreports-release/app"
+                    location: base + "js/photoreports-release/app"
                 }, {
                     name: "core",
-                    location: base + "/js/photoreports-release/core"
+                    location: base + "js/photoreports-release/core"
                 }]
             };
         })();
@@ -49,12 +49,11 @@
 
     <!--<script src="/js/photoreports-release/core/dojo.js"  data-dojo-config="async:true"></script>-->
     <script src="js/photoreports-release/dojo/dojo/dojo.js"  data-dojo-config="async:true"></script>
+    <script src="js/photoreports-release/app/photoreports-app.js"  data-dojo-config="async:true"></script>
     <script src="js/cordova-2.5.0.js"></script>
 
     <script>
         (function(){
-            require(["app/photoreports-app"],
-                    (function(){
                         require(["dojox/mobile/parser", "photoreports/DeviceSpecificFunctions", "dojox/mobile/TabBar",
                             "dojo/dom-attr",
                             "dojo/_base/array",
@@ -70,10 +69,10 @@
                                     deviceSpecFunctions.onDeviceReady();
                                 });
 
-                    })()
-        )
         })();
     </script>
+
+
 
 </head>
 <body>
