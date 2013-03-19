@@ -19,20 +19,21 @@ define(["dojo/_base/declare", "dojo/_base/lang", "dojo/query"],
 
             startDeviceSpecificEventsHandlers: function(){
                 lang.hitch(this, document.addEventListener("deviceready", this.onDeviceReady, false));
-                console.log('Start!');
+
             },
 
 
             onDeviceReady: function(){
                 lang.hitch(this, document.addEventListener("backbutton", this.backKeyDown, true));
-                console.log('REady!');
+
             },
 
             backKeyDown: function(){
                 // do something here if you wish
                 var windowHash = window.location.hash;
+                console.log('Back button');
                 if(windowHash.indexOf(this.firstScreenHash) !== -1){
-                     console.log('Close Application');
+
                     if (navigator.app && navigator.app.exitApp) {
                         navigator.app.exitApp();
                     } else if (navigator.device && navigator.device.exitApp) {
