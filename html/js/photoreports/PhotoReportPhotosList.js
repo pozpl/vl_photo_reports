@@ -33,6 +33,11 @@ define(["dojo/_base/declare", "dojo/_base/array", "dojo/_base/lang", "dojo/i18n"
 //					function(moveTo, dir, transition, context, method){
 //						query(".photos_grid").forEach(domConstruct.empty);
 //				});
+                var firstScreenHash = "last_photoreports";
+                var windowHash = window.location.hash;
+                if(windowHash.indexOf(firstScreenHash) == -1){
+                    this.performTransition("#" + firstScreenHash);
+                }
 			},
 
 
