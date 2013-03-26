@@ -66,7 +66,8 @@ var profile = {
 				"photoreports/PhotoReportsList",
 				"photoreports/PhotoReportPhotosList",
 				"photoreports/PhotoSlideShow",
-                "photoreports/DeviceSpecificFunctions"
+                "photoreports/DeviceSpecificFunctions",
+                "photoreports/InitScreen"
 			]
 		}
 	},
